@@ -3,6 +3,8 @@
 ## 第2章 开发环境的安装预配置讲解
 [返回主目录](../README.md)
 
+[软件安装配置](http://learning.happymmall.com/)
+
 ### 2-1~2 linux软件源配置与学习建议与实操
 CentOS7
 [阿里巴巴开源软件站](https://opsx.alibaba.com/?lang=zh-CN)
