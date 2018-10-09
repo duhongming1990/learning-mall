@@ -11,8 +11,8 @@
 
     <modules>
         <module>mall-introduction</module>
-
-        <module>mmall-learning</module>
+        <module>mall-install</module>
+        <module>mall-database</module>
     </modules>
 
     <build>
