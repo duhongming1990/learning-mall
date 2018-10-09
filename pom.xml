@@ -11,6 +11,8 @@
 
     <modules>
         <module>mall-introduction</module>
+        <module>mall-install</module>
+        <module>mall-database</module>
     </modules>
 
     <build>
