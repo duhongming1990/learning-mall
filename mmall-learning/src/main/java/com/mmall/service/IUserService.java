@@ -2,26 +2,32 @@ package com.mmall.service;
 
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
-
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/10 13:51
+ */
 public interface IUserService {
 
-    ServerResponse<User> login(String username, String password);
+    User login(String username, String password);
 
-    ServerResponse<String> register(User user);
+    Integer register(User user);
 
-    ServerResponse<String> checkValid(String str, String type);
+    Boolean checkExistValid(String str, String type);
 
-    ServerResponse selectQuestion(String username);
+    Boolean CheckNotExistValid(String str, String type);
 
-    ServerResponse checkAnswer(String username, String question, String answer);
+    String selectQuestion(String username);
 
-    ServerResponse<String> forgetResetPassword(String username, String passwordNew, String forgetToken);
+    String checkAnswer(String username, String question, String answer);
 
-    ServerResponse<String> resetPassword(String passwordOld, String passwordNew, User user);
+    Integer forgetResetPassword(String username, String passwordNew, String forgetToken);
 
-    ServerResponse<User> updateInformation(User user);
+    Integer resetPassword(String passwordOld, String passwordNew, User user);
 
-    ServerResponse<User> getInformation(Integer id);
+    Integer updateInformation(User user);
 
-    ServerResponse checkAdminRole(User user);
+    User getInformation(Integer id);
+
+    void checkAdminRole(User user);
 }

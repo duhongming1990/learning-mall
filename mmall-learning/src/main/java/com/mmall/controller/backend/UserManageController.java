@@ -2,6 +2,8 @@ package com.mmall.controller.backend;
 
 import com.mmall.common.Const;
 import com.mmall.common.ServerResponse;
+import com.mmall.common.exception.CommonExceptions;
+import com.mmall.common.response.ResultBean;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +29,11 @@ public class UserManageController {
 
     @PostMapping(value="login.do")
     @ResponseBody
-    public ServerResponse<User> login(String username, String password, HttpSession session){
-        ServerResponse<User> response = iUserService.login(username,password);
-        if(response.isSuccess()){
-            User user = response.getData();
-            if(user.getRole() == Const.Role.ROLE_ADMIN){
-                //说明登录的是管理员
-                session.setAttribute(Const.CURRENT_USER,user);
-                return response;
-            }else{
-                return ServerResponse.createByErrorMessage("不是管理员,无法登录");
-            }
-        }
-        return response;
+    public ResultBean<User> login(String username, String password, HttpSession session){
+        User user = iUserService.login(username,password);
+        iUserService.checkAdminRole(user);
+        session.setAttribute(Const.CURRENT_USER,user);
+        return new ResultBean<>(user);
     }
 
 }
