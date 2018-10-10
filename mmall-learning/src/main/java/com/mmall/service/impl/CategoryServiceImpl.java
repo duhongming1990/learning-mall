@@ -3,6 +3,7 @@ package com.mmall.service.impl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mmall.common.ServerResponse;
+import com.mmall.common.exception.CommonExceptions;
 import com.mmall.dao.CategoryMapper;
 import com.mmall.pojo.Category;
 import com.mmall.service.ICategoryService;
@@ -21,40 +22,35 @@ public class CategoryServiceImpl implements ICategoryService {
     private CategoryMapper categoryMapper;
 
     @Override
-    public ServerResponse addCategory(String categoryName,int parentId){
+    public Category addCategory(String categoryName,int parentId){
         if (StringUtils.isBlank(categoryName)){
-            return ServerResponse.createByErrorMessage("添加类别参数错误");
+            throw CommonExceptions.CategoryCommonException.CATEGORY_PARAMETER_REEOR.getCommonException();
         }
         Category category = new Category();
         category.setName(categoryName);
         category.setParentId(parentId);
         category.setStatus(true);
-        int rowCount = categoryMapper.insert(category);
-        if(rowCount > 0){
-            return ServerResponse.createBySuccess("添加类别成功");
-        }
-        return  ServerResponse.createByErrorMessage("添加类别失败");
+        categoryMapper.insert(category);
+        return category;
     }
 
     @Override
-    public ServerResponse updateCategory(Category category) {
+    public Integer updateCategory(Category category) {
         if (StringUtils.isBlank(category.getName())){
-            return ServerResponse.createByErrorMessage("添加类别参数错误");
+            throw CommonExceptions.CategoryCommonException.CATEGORY_PARAMETER_REEOR.getCommonException();
         }
         int rowCount = categoryMapper.updateByPrimaryKeySelective(category);
-        if(rowCount > 0){
-            return ServerResponse.createBySuccess("更改类别成功");
-        }
-        return  ServerResponse.createByErrorMessage("更改类别失败");
+        return rowCount;
     }
 
-    @Override
+
     /**
      * 递归查询本节点的id及孩子节点的id
      * @param categoryId
      * @return
      */
-    public ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId){
+    @Override
+    public List<Integer> selectCategoryAndChildrenById(Integer categoryId){
         Set<Category> categorySet = Sets.newHashSet();
         findChildCategory(categorySet,categoryId);
 
@@ -65,15 +61,16 @@ public class CategoryServiceImpl implements ICategoryService {
                 categoryIdList.add(categoryItem.getId());
             }
         }
-        return ServerResponse.createBySuccess(categoryIdList);
+        return categoryIdList;
     }
 
-    public ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId){
+    @Override
+    public List<Category> getChildrenParallelCategory(Integer categoryId){
         List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
         if(CollectionUtils.isEmpty(categoryList)){
 //            logger.info("未找到当前分类的子分类");
         }
-        return ServerResponse.createBySuccess(categoryList);
+        return categoryList;
     }
 
     //递归算法,算出子节点

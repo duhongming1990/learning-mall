@@ -27,7 +27,7 @@ public class CommonExceptions {
 
 
         USER_NOT_LOGIN(new CommonException(1201,"用户未登录！")),
-        USER_NOT_ADMIN(new CommonException(1202," 不是管理员,无法登录！"));
+        USER_NOT_ADMIN(new CommonException(1202,"您不是管理员,无权限操作,需要管理员权限！"));
 
 
 
@@ -48,6 +48,31 @@ public class CommonExceptions {
         public static void show(){
             for(UserCommonException u : UserCommonException.values()){
                 System.out.println(u + "： UserCommonException =" + u.getCommonException());
+            }
+        }
+    }
+
+    public enum CategoryCommonException{
+
+        CATEGORY_PARAMETER_REEOR(new CommonException(1000,"添加类别参数错误！"));
+
+        private CommonException commonException;
+
+        CategoryCommonException(CommonException commonException){
+            this.commonException = commonException;
+        }
+
+        public CommonException getCommonException() {
+            return commonException;
+        }
+
+        public void setCommonException(CommonException commonException) {
+            this.commonException = commonException;
+        }
+
+        public static void show(){
+            for(UserCommonException u : UserCommonException.values()){
+                System.out.println(u + "： CategoryCommonException =" + u.getCommonException());
             }
         }
     }
