@@ -13,6 +13,7 @@
         <module>mall-introduction</module>
         <module>mall-install</module>
         <module>mall-database</module>
+        <module>mall-init</module>
     </modules>
 
     <build>
