@@ -2,10 +2,9 @@ package com.mmall.service.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.mmall.common.ServerResponse;
 import com.mmall.common.exception.CommonExceptions;
 import com.mmall.dao.CategoryMapper;
-import com.mmall.pojo.Category;
+import com.mmall.bean.pojo.Category;
 import com.mmall.service.ICategoryService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;

@@ -1,10 +1,15 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
-public class Order {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:06
+ */
+public class Order extends CommonBean {
 
     private Long orderNo;
 
@@ -27,10 +32,6 @@ public class Order {
     private Date endTime;
 
     private Date closeTime;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, BigDecimal payment, Integer paymentType, Integer postage, Integer status, Date paymentTime, Date sendTime, Date endTime, Date closeTime, Date createTime, Date updateTime) {
         this.id = id;

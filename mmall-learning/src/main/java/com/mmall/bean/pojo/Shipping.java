@@ -1,9 +1,14 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.util.Date;
-
-public class Shipping {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:07
+ */
+public class Shipping extends CommonBean {
 
     private Integer userId;
 
@@ -22,10 +27,6 @@ public class Shipping {
     private String receiverAddress;
 
     private String receiverZip;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, Date createTime, Date updateTime) {
         this.id = id;

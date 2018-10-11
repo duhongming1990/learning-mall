@@ -1,10 +1,15 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
-public class Product {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:06
+ */
+public class Product extends CommonBean {
 
     private Integer categoryId;
 
@@ -23,10 +28,6 @@ public class Product {
     private Integer stock;
 
     private Integer status;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
         this.id = id;

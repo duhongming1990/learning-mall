@@ -1,28 +1,27 @@
 package com.mmall.service;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Product;
-import com.mmall.vo.ProductDetailVo;
+import com.mmall.bean.pojo.Product;
+import com.mmall.bean.vo.ProductDetailVo;
 
 /**
  * Created by geely
  */
 public interface IProductService {
 
-    ServerResponse saveOrUpdateProduct(Product product);
+    Integer saveOrUpdateProduct(Product product);
 
-    ServerResponse<String> setSaleStatus(Integer productId, Integer status);
+    Integer setSaleStatus(Integer productId, Integer status);
 
-    ServerResponse<ProductDetailVo> manageProductDetail(Integer productId);
+    ProductDetailVo manageProductDetail(Integer productId);
 
-    ServerResponse<PageInfo> getProductList(int pageNum, int pageSize);
+    PageInfo getProductList(int pageNum, int pageSize);
 
-    ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize);
+    PageInfo searchProduct(String productName, Integer productId, int pageNum, int pageSize);
 
-    ServerResponse<ProductDetailVo> getProductDetail(Integer productId);
+    ProductDetailVo getProductDetail(Integer productId);
 
-    ServerResponse<PageInfo> getProductByKeywordCategory(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy);
+    PageInfo getProductByKeywordCategory(String keyword, Integer categoryId, int pageNum, int pageSize, String orderBy);
 
 
 

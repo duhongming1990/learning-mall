@@ -1,7 +1,7 @@
 package com.mmall.service;
 
 import com.mmall.common.ServerResponse;
-import com.mmall.vo.CartVo;
+import com.mmall.bean.vo.CartVo;
 
 /**
  * Created by geely

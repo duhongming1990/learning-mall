@@ -1,4 +1,4 @@
-package com.mmall.vo;
+package com.mmall.bean.vo;
 
 /**
  * Created by geely

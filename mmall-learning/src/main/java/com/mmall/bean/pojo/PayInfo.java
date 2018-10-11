@@ -1,9 +1,14 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.util.Date;
-
-public class PayInfo {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:06
+ */
+public class PayInfo extends CommonBean {
 
     private Integer userId;
 
@@ -14,10 +19,6 @@ public class PayInfo {
     private String platformNumber;
 
     private String platformStatus;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public PayInfo(Integer id, Integer userId, Long orderNo, Integer payPlatform, String platformNumber, String platformStatus, Date createTime, Date updateTime) {
         this.id = id;

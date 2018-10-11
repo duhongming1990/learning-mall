@@ -2,7 +2,7 @@ package com.mmall.service;
 
 import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Shipping;
+import com.mmall.bean.pojo.Shipping;
 
 /**
  * Created by geely

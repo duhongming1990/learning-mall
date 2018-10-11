@@ -1,9 +1,14 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.util.Date;
-
-public class User {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:07
+ */
+public class User extends CommonBean {
 
     private String username;
 
@@ -18,10 +23,6 @@ public class User {
     private String answer;
 
     private Integer role;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public User(Integer id, String username, String password, String email, String phone, String question, String answer, Integer role, Date createTime, Date updateTime) {
         this.id = id;

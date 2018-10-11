@@ -1,10 +1,15 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
-public class OrderItem {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:06
+ */
+public class OrderItem extends CommonBean {
 
     private Integer userId;
 
@@ -21,10 +26,6 @@ public class OrderItem {
     private Integer quantity;
 
     private BigDecimal totalPrice;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public OrderItem(Integer id, Integer userId, Long orderNo, Integer productId, String productName, String productImage, BigDecimal currentUnitPrice, Integer quantity, BigDecimal totalPrice, Date createTime, Date updateTime) {
         this.id = id;

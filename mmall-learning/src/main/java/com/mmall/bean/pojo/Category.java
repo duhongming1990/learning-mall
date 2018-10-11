@@ -1,9 +1,14 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
+
+import com.mmall.bean.CommonBean;
 
 import java.util.Date;
-
-public class Category {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:05
+ */
+public class Category extends CommonBean {
 
     private Integer parentId;
 
@@ -12,10 +17,6 @@ public class Category {
     private Boolean status;
 
     private Integer sortOrder;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public Category(Integer id, Integer parentId, String name, Boolean status, Integer sortOrder, Date createTime, Date updateTime) {
         this.id = id;

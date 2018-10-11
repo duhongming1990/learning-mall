@@ -1,28 +1,51 @@
-package com.mmall.vo;
+package com.mmall.bean.pojo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
-/**
- * Created by geely
- */
-public class ProductDetailVo {
+public class Product {
+    private Integer id;
 
-    private Integer  id;
     private Integer categoryId;
+
     private String name;
+
     private String subtitle;
+
     private String mainImage;
+
     private String subImages;
+
     private String detail;
+
     private BigDecimal price;
+
     private Integer stock;
+
     private Integer status;
-    private String createTime;
-    private String updateTime;
 
+    private Date createTime;
 
-    private String imageHost;
-    private Integer parentCategoryId;
+    private Date updateTime;
+
+    public Product(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
+        this.id = id;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.subtitle = subtitle;
+        this.mainImage = mainImage;
+        this.subImages = subImages;
+        this.detail = detail;
+        this.price = price;
+        this.stock = stock;
+        this.status = status;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
+
+    public Product() {
+        super();
+    }
 
     public Integer getId() {
         return id;
@@ -45,7 +68,7 @@ public class ProductDetailVo {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getSubtitle() {
@@ -53,7 +76,7 @@ public class ProductDetailVo {
     }
 
     public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
+        this.subtitle = subtitle == null ? null : subtitle.trim();
     }
 
     public String getMainImage() {
@@ -61,7 +84,7 @@ public class ProductDetailVo {
     }
 
     public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
+        this.mainImage = mainImage == null ? null : mainImage.trim();
     }
 
     public String getSubImages() {
@@ -69,7 +92,7 @@ public class ProductDetailVo {
     }
 
     public void setSubImages(String subImages) {
-        this.subImages = subImages;
+        this.subImages = subImages == null ? null : subImages.trim();
     }
 
     public String getDetail() {
@@ -77,7 +100,7 @@ public class ProductDetailVo {
     }
 
     public void setDetail(String detail) {
-        this.detail = detail;
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public BigDecimal getPrice() {
@@ -104,35 +127,19 @@ public class ProductDetailVo {
         this.status = status;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getImageHost() {
-        return imageHost;
-    }
-
-    public void setImageHost(String imageHost) {
-        this.imageHost = imageHost;
-    }
-
-    public Integer getParentCategoryId() {
-        return parentCategoryId;
-    }
-
-    public void setParentCategoryId(Integer parentCategoryId) {
-        this.parentCategoryId = parentCategoryId;
     }
 }

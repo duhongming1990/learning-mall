@@ -56,6 +56,7 @@ public class CommonExceptions {
 
         CATEGORY_PARAMETER_REEOR(new CommonException(1000,"添加类别参数错误！"));
 
+
         private CommonException commonException;
 
         CategoryCommonException(CommonException commonException){
@@ -73,6 +74,32 @@ public class CommonExceptions {
         public static void show(){
             for(UserCommonException u : UserCommonException.values()){
                 System.out.println(u + "： CategoryCommonException =" + u.getCommonException());
+            }
+        }
+    }
+
+    public enum ProductCommonException{
+
+        PRODUCT_UNSALE_DELETE(new CommonException(1000,"产品已下架或者删除！"));
+
+
+        private CommonException commonException;
+
+        ProductCommonException(CommonException commonException){
+            this.commonException = commonException;
+        }
+
+        public CommonException getCommonException() {
+            return commonException;
+        }
+
+        public void setCommonException(CommonException commonException) {
+            this.commonException = commonException;
+        }
+
+        public static void show(){
+            for(UserCommonException u : UserCommonException.values()){
+                System.out.println(u + "： ProductCommonException =" + u.getCommonException());
             }
         }
     }

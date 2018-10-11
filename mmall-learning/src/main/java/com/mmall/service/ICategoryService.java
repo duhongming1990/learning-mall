@@ -1,6 +1,6 @@
 package com.mmall.service;
 
-import com.mmall.pojo.Category;
+import com.mmall.bean.pojo.Category;
 
 import java.util.List;
 

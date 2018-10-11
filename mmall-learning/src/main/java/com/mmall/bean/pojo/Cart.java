@@ -1,9 +1,13 @@
-package com.mmall.pojo;
+package com.mmall.bean.pojo;
 
+import com.mmall.bean.CommonBean;
 import java.util.Date;
-
-public class Cart {
-    private Integer id;
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/11 11:05
+ */
+public class Cart extends CommonBean {
 
     private Integer userId;
 
@@ -12,10 +16,6 @@ public class Cart {
     private Integer quantity;
 
     private Integer checked;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public Cart(Integer id, Integer userId, Integer productId, Integer quantity, Integer checked, Date createTime, Date updateTime) {
         this.id = id;

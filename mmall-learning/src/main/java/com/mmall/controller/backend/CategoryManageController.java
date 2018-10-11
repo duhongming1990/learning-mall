@@ -1,12 +1,10 @@
 package com.mmall.controller.backend;
 
 import com.mmall.common.Const;
-import com.mmall.common.ResponseCode;
-import com.mmall.common.ServerResponse;
 import com.mmall.common.exception.CommonExceptions;
 import com.mmall.common.response.ResultBean;
-import com.mmall.pojo.Category;
-import com.mmall.pojo.User;
+import com.mmall.bean.pojo.Category;
+import com.mmall.bean.pojo.User;
 import com.mmall.service.ICategoryService;
 import com.mmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;

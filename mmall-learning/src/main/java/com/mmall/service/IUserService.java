@@ -1,7 +1,6 @@
 package com.mmall.service;
 
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.User;
+import com.mmall.bean.pojo.User;
 /**
  * @Author duhongming
  * @Email 19919902414@189.cn
