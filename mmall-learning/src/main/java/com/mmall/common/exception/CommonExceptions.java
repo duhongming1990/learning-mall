@@ -80,7 +80,8 @@ public class CommonExceptions {
 
     public enum ProductCommonException{
 
-        PRODUCT_UNSALE_DELETE(new CommonException(1000,"产品已下架或者删除！"));
+        PRODUCT_UNSALE_DELETE(new CommonException(1000,"产品已下架或者删除！")),
+        PRODUCT_NOT_FOUND(new CommonException(1001,"产品未找到！"));
 
 
         private CommonException commonException;
