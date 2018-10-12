@@ -1,0 +1,2179 @@
+{
+  "front-version": "2.19.1",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "description": "",
+      "id": "669d3e10-b5e1-44d9-acce-cff53b8b3829",
+      "lastModified": "2018-10-12T15:35:45.058+08:00",
+      "name": "mmall-learning"
+    },
+    {
+      "type": "Service",
+      "description": "后台_品类接口",
+      "id": "4f95a0f8-04b8-4bdf-a30b-bdb3398f0c7e",
+      "lastModified": "2018-10-12T13:29:03.780+08:00",
+      "name": "后台_品类接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "categoryId",
+              "value": "100001"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/category/get_category.do"
+      },
+      "id": "15e4a4ca-5056-463e-8513-b3ce0bd618dd",
+      "lastModified": "2018-10-12T13:32:14.683+08:00",
+      "name": "01.获取品类子节点(平级)",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "4f95a0f8-04b8-4bdf-a30b-bdb3398f0c7e"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "parentId",
+              "value": "0"
+            },
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "name"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/category/add_category.do"
+      },
+      "id": "7fa04d96-55ed-47a2-bcc4-c4bd43f772d8",
+      "lastModified": "2018-10-12T13:32:16.511+08:00",
+      "name": "02.增加节点",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "4f95a0f8-04b8-4bdf-a30b-bdb3398f0c7e"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "categoryId",
+              "value": "0"
+            },
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "categoryNameUpdate"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/category/set_category_name.do"
+      },
+      "id": "fa2cf6cd-1e27-4779-80b7-84bde90480a5",
+      "lastModified": "2018-10-12T13:32:18.846+08:00",
+      "name": "03.修改品类名字",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "4f95a0f8-04b8-4bdf-a30b-bdb3398f0c7e"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "categoryId",
+              "value": "100001"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/category/get_deep_category.do"
+      },
+      "id": "5fb8b54d-3f95-45e6-9862-fa9edb5745d9",
+      "lastModified": "2018-10-12T13:32:21.364+08:00",
+      "name": "04.获取当前分类id及递归子节点categoryId",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "4f95a0f8-04b8-4bdf-a30b-bdb3398f0c7e"
+    },
+    {
+      "type": "Service",
+      "description": "后台_商品接口",
+      "id": "def144d4-fa23-4b0c-ae71-73050cb18ceb",
+      "lastModified": "2018-10-12T13:29:43.028+08:00",
+      "name": "后台_商品接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "categoryId",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "三星洗衣机——update"
+            },
+            {
+              "enabled": true,
+              "name": "subtitle",
+              "value": "三星大促销——update"
+            },
+            {
+              "enabled": true,
+              "name": "subImages",
+              "value": "test.jpg,11.jpg,2.jpg,3.jpg"
+            },
+            {
+              "enabled": true,
+              "name": "detail",
+              "value": "detailtext"
+            },
+            {
+              "enabled": true,
+              "name": "price",
+              "value": "1000"
+            },
+            {
+              "enabled": true,
+              "name": "stock",
+              "value": "100"
+            },
+            {
+              "enabled": true,
+              "name": "status",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "id",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/save.do"
+      },
+      "id": "27a8573c-ebb5-4d9d-aa57-62a6b1103561",
+      "lastModified": "2018-10-12T13:32:27.054+08:00",
+      "name": "01.新增OR更新产品",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            },
+            {
+              "enabled": true,
+              "name": "status",
+              "value": "2"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/set_sale_status.do"
+      },
+      "id": "584d7354-a684-4952-9c22-4d52b335c0dd",
+      "lastModified": "2018-10-12T13:32:29.111+08:00",
+      "name": "02.产品上下架",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/detail.do"
+      },
+      "id": "469077e4-28b2-4d52-b123-6dfe92763bf6",
+      "lastModified": "2018-10-12T13:32:31.060+08:00",
+      "name": "03.产品详情",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/list.do"
+      },
+      "id": "00157ad7-48ec-4e64-a0e0-46f1e4cf38a7",
+      "lastModified": "2018-10-12T13:32:32.726+08:00",
+      "name": "04.产品list",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "name": "productName",
+              "value": "p"
+            },
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/search.do"
+      },
+      "id": "4cd57bd3-1d84-485c-8dd2-bb7c845c795c",
+      "lastModified": "2018-10-12T13:32:35.111+08:00",
+      "name": "05.产品搜索",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/upload.do"
+      },
+      "id": "632e9480-e58e-4e99-bb7e-3a3ca1d1bc09",
+      "lastModified": "2018-10-12T13:32:37.058+08:00",
+      "name": "06.图片上传",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/product/richtext_img_upload.do"
+      },
+      "id": "7db09ad6-68bb-4468-ac04-c87b9c6f0ef6",
+      "lastModified": "2018-10-12T13:32:38.864+08:00",
+      "name": "07.富文本上传图片",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "def144d4-fa23-4b0c-ae71-73050cb18ceb"
+    },
+    {
+      "type": "Service",
+      "description": "后台_用户接口",
+      "id": "e8404b60-62f0-4072-aa51-97c038476796",
+      "lastModified": "2018-10-12T09:49:28.967+08:00",
+      "name": "后台_用户接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            },
+            {
+              "enabled": true,
+              "name": "password",
+              "value": "123456"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/manage/user/login.do"
+      },
+      "id": "3ffdd344-04ea-43e3-addf-295dcf957d03",
+      "lastModified": "2018-10-12T13:33:04.609+08:00",
+      "name": "01.后台管理员登录",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "e8404b60-62f0-4072-aa51-97c038476796"
+    },
+    {
+      "type": "Service",
+      "description": "门户_商品接口",
+      "id": "eae4652e-113f-45c3-b8f1-91a83b107bed",
+      "lastModified": "2018-10-12T13:51:48.198+08:00",
+      "name": "门户_商品接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "keyword",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "categoryId",
+              "value": "100001"
+            },
+            {
+              "enabled": true,
+              "name": "orderBy",
+              "value": "price_desc"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/product/list.do"
+      },
+      "id": "cb6e9a14-9ea7-40ae-a9a5-0b6b9a7a0824",
+      "lastModified": "2018-10-12T13:52:04.359+08:00",
+      "name": "01.产品搜索及动态排序List",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "eae4652e-113f-45c3-b8f1-91a83b107bed"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/product/detail.do"
+      },
+      "id": "9f273312-e2fc-4101-ab67-67887cffea87",
+      "lastModified": "2018-10-12T13:52:16.473+08:00",
+      "name": "02.产品detail",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "eae4652e-113f-45c3-b8f1-91a83b107bed"
+    },
+    {
+      "type": "Service",
+      "description": "门户_收货地址接口",
+      "id": "1cc328b5-af48-416a-b7c5-2670a5238598",
+      "lastModified": "2018-10-12T15:17:42.877+08:00",
+      "name": "门户_收货地址接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "userId",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "receiverName",
+              "value": "geely"
+            },
+            {
+              "enabled": true,
+              "name": "receiverPhone",
+              "value": "010"
+            },
+            {
+              "enabled": true,
+              "name": "receiverMobile",
+              "value": "18688888888"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverProvince",
+              "value": "北京"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverCity",
+              "value": "北京市"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverAddress",
+              "value": "中关村"
+            },
+            {
+              "enabled": true,
+              "name": "receiverZip",
+              "value": "100000"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/shipping/add.do"
+      },
+      "id": "701a0373-4eff-4726-a663-9f6318bd0bfa",
+      "lastModified": "2018-10-12T15:19:56.244+08:00",
+      "name": "01.添加地址",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "1cc328b5-af48-416a-b7c5-2670a5238598"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "shippingId",
+              "value": "31"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/shipping/del.do"
+      },
+      "id": "9ce59db7-929d-4c84-aa50-dac1b588e297",
+      "lastModified": "2018-10-12T15:32:13.734+08:00",
+      "name": "02.删除地址",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "1cc328b5-af48-416a-b7c5-2670a5238598"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "id",
+              "value": "32"
+            },
+            {
+              "enabled": true,
+              "name": "receiverName",
+              "value": "AAA"
+            },
+            {
+              "enabled": true,
+              "name": "receiverPhone",
+              "value": "010"
+            },
+            {
+              "enabled": true,
+              "name": "receiverMobile",
+              "value": "18688888888"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverProvince",
+              "value": "吉林省"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverCity",
+              "value": "长春市"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverDistrict",
+              "value": "宽城区"
+            },
+            {
+              "enabled": true,
+              "encoded": true,
+              "name": "receiverAddress",
+              "value": "吉林大学"
+            },
+            {
+              "enabled": true,
+              "name": "receiverZip",
+              "value": "100000"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/shipping/update.do"
+      },
+      "id": "cfe91501-db8b-495f-aa28-2444ddab2f9d",
+      "lastModified": "2018-10-12T15:35:16.051+08:00",
+      "name": "03.登录状态更新地址",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "1cc328b5-af48-416a-b7c5-2670a5238598"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "shippingId",
+              "value": "32"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/shipping/select.do"
+      },
+      "id": "20c5bb05-1c4e-46f5-be52-aac81402edfd",
+      "lastModified": "2018-10-12T15:35:06.676+08:00",
+      "name": "04.选中查看具体的地址",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "1cc328b5-af48-416a-b7c5-2670a5238598"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/shipping/list.do"
+      },
+      "id": "4a2a8ea3-f493-4567-85f9-0d1b0e5bae90",
+      "lastModified": "2018-10-12T15:35:45.059+08:00",
+      "name": "05.地址列表",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "1cc328b5-af48-416a-b7c5-2670a5238598"
+    },
+    {
+      "type": "Service",
+      "description": "门户_用户接口",
+      "id": "10dedf31-406c-48cd-8987-69fc4ae32147",
+      "lastModified": "2018-10-12T09:47:15.220+08:00",
+      "name": "门户_用户接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            },
+            {
+              "enabled": true,
+              "name": "password",
+              "value": "123456"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/login.do"
+      },
+      "id": "26453d12-4b13-4468-9204-510b168bebf0",
+      "lastModified": "2018-10-12T13:33:09.394+08:00",
+      "name": "01.登录",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            },
+            {
+              "enabled": true,
+              "name": "password",
+              "value": "123456"
+            },
+            {
+              "enabled": true,
+              "name": "email",
+              "value": "935720334@qq.com"
+            },
+            {
+              "enabled": true,
+              "name": "phone",
+              "value": "13342496610"
+            },
+            {
+              "enabled": true,
+              "name": "question",
+              "value": "question"
+            },
+            {
+              "enabled": true,
+              "name": "answer",
+              "value": "answer"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/register.do"
+      },
+      "id": "fa546258-8d7b-4e04-9c70-50bf606fc484",
+      "lastModified": "2018-10-12T13:33:16.255+08:00",
+      "name": "02.注册",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "name": "str",
+              "value": "duhongming"
+            },
+            {
+              "name": "type",
+              "value": "username"
+            },
+            {
+              "enabled": true,
+              "name": "str",
+              "value": "935720334@qq.com"
+            },
+            {
+              "enabled": true,
+              "name": "type",
+              "value": "email"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/check_valid.do"
+      },
+      "id": "e20337bf-e599-4183-9dd1-79448641978f",
+      "lastModified": "2018-10-12T13:33:19.271+08:00",
+      "name": "03.检查用户名是否有效",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/get_user_info.do"
+      },
+      "id": "da05fab8-72fc-4113-8878-a581f35a79c9",
+      "lastModified": "2018-10-12T13:33:21.373+08:00",
+      "name": "04.获取登录用户信息",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/forget_get_question.do"
+      },
+      "id": "88d8f6d6-9dd7-4240-949c-a2966e3060ec",
+      "lastModified": "2018-10-12T13:33:23.393+08:00",
+      "name": "05.忘记密码",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            },
+            {
+              "enabled": true,
+              "name": "question",
+              "value": "question"
+            },
+            {
+              "enabled": true,
+              "name": "answer",
+              "value": "answer"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/forget_check_answer.do"
+      },
+      "id": "84b857b2-9db8-4fcd-81f8-75eb9a4033fb",
+      "lastModified": "2018-10-12T13:33:25.973+08:00",
+      "name": "06.提交问题答案",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "username",
+              "value": "duhongming"
+            },
+            {
+              "enabled": true,
+              "name": "passwordNew",
+              "value": "123456"
+            },
+            {
+              "enabled": true,
+              "name": "forgetToken",
+              "value": "99966d75-9731-4d02-87cb-9c8e50e80130"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/forget_rest_password.do"
+      },
+      "id": "a5598532-8bf8-432e-aa7b-177367c5b5ac",
+      "lastModified": "2018-10-12T13:33:27.783+08:00",
+      "name": "07.忘记密码的重设密码",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "passwordOld",
+              "value": "123456"
+            },
+            {
+              "enabled": true,
+              "name": "passwordNew",
+              "value": "123456"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/reset_password.do"
+      },
+      "id": "838bb903-89d7-4f79-9403-7043ac322726",
+      "lastModified": "2018-10-12T13:33:29.528+08:00",
+      "name": "08.登录中状态重置密码",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "email",
+              "value": "935720334@qq.com"
+            },
+            {
+              "enabled": true,
+              "name": "phone",
+              "value": "13342496610"
+            },
+            {
+              "enabled": true,
+              "name": "question",
+              "value": "question"
+            },
+            {
+              "enabled": true,
+              "name": "answer",
+              "value": "answer"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/update_information.do"
+      },
+      "id": "4854abf6-8d0c-439b-b74e-a687f1f94374",
+      "lastModified": "2018-10-12T13:33:31.646+08:00",
+      "name": "09.登录状态更新个人信息",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/get_information.do"
+      },
+      "id": "63392bc9-de9d-4005-8a0b-36e16633cc2c",
+      "lastModified": "2018-10-12T13:33:34.263+08:00",
+      "name": "10.获取当前登录用户的详细信息",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Form",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/user/logout.do"
+      },
+      "id": "dbadd850-5fe3-4ef2-86aa-2864f862d1fa",
+      "lastModified": "2018-10-12T13:33:36.240+08:00",
+      "name": "11.退出登录",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "10dedf31-406c-48cd-8987-69fc4ae32147"
+    },
+    {
+      "type": "Service",
+      "description": "门户_购物车接口",
+      "id": "70de76ce-811d-44c4-8b31-b0913e03439b",
+      "lastModified": "2018-10-12T14:32:08.820+08:00",
+      "name": "门户_购物车接口",
+      "parentId": "669d3e10-b5e1-44d9-acce-cff53b8b3829"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/list.do"
+      },
+      "id": "c30baa2a-abbb-48b2-b749-73ba98c924d4",
+      "lastModified": "2018-10-12T14:50:52.606+08:00",
+      "name": "01.购物车List列表",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            },
+            {
+              "enabled": true,
+              "name": "count",
+              "value": "10"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/add.do"
+      },
+      "id": "dbfa6f2c-7c03-496c-80a1-c5add9e5384a",
+      "lastModified": "2018-10-12T15:01:44.096+08:00",
+      "name": "02.购物车添加商品",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            },
+            {
+              "enabled": true,
+              "name": "count",
+              "value": "2"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/update.do"
+      },
+      "id": "2dde0c0b-f692-4b05-8ac4-05915d352164",
+      "lastModified": "2018-10-12T15:02:24.934+08:00",
+      "name": "03.更新购物车某个产品数量",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productIds",
+              "value": "1,30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/delete_product.do"
+      },
+      "id": "5ac75b37-b05b-40f3-a258-3007127c6ac9",
+      "lastModified": "2018-10-12T15:03:22.147+08:00",
+      "name": "04.移除购物车某个产品",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/select.do"
+      },
+      "id": "cb42f4e5-573b-455d-877e-48a9f59216a3",
+      "lastModified": "2018-10-12T15:04:30.815+08:00",
+      "name": "05.购物车选中某个商品",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "productId",
+              "value": "30"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/un_select.do"
+      },
+      "id": "39b67e8b-925b-4aa1-9d78-ca7357e260a2",
+      "lastModified": "2018-10-12T15:04:20.717+08:00",
+      "name": "06.购物车取消选中某个商品",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/get_cart_product_count.do"
+      },
+      "id": "40bd046e-542b-4bdb-9b3a-723a904fb1b4",
+      "lastModified": "2018-10-12T15:05:11.134+08:00",
+      "name": "07.查询在购物车里的产品数量",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/select_all.do"
+      },
+      "id": "60b4b248-5936-4b3f-976d-f1125aebe409",
+      "lastModified": "2018-10-12T15:06:18.925+08:00",
+      "name": "08.购物车全选",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{http_url}",
+        "path": "/cart/un_select_all.do"
+      },
+      "id": "dc1c94ab-0be8-4c11-978d-765ccabeb45e",
+      "lastModified": "2018-10-12T15:06:45.313+08:00",
+      "name": "09.购物车取消全选",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70de76ce-811d-44c4-8b31-b0913e03439b"
+    },
+    {
+      "type": "Context",
+      "id": "527be845-f4ea-48e0-ae58-3bdf1dfc5ee0",
+      "lastModified": "2018-10-10T10:27:21.455+08:00",
+      "name": "mmall-learnning",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "http_url",
+          "value": "http://127.0.0.1:8080"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "29625df3-53fd-48b7-94dc-7d997d86691c",
+      "lastModified": "2018-09-03T16:18:29.605+08:00",
+      "name": "人济接口测试",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "http_url",
+          "value": "http://192.168.100.246:8080"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "736672ff-3149-4711-b9db-e0d80e12260d",
+      "lastModified": "2018-09-11T09:22:51.748+08:00",
+      "name": "定时任务接口8811",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "host",
+          "value": "127.0.0.1:8811"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "84a9aba5-682b-4d6e-a46b-66b8346c29f6",
+      "lastModified": "2018-09-11T09:22:32.560+08:00",
+      "name": "定时任务接口8822",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "host",
+          "value": "127.0.0.1:8822"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "dcdd4df3-e620-40e4-99f0-6681269ad5e8",
+      "lastModified": "2018-09-03T16:12:47.533+08:00",
+      "name": "本地接口测试",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "http_url",
+          "value": "http://127.0.0.1"
+        }
+      ]
+    }
+  ]
+}

@@ -9,10 +9,10 @@ import com.mmall.bean.pojo.Shipping;
  */
 public interface IShippingService {
 
-    ServerResponse add(Integer userId, Shipping shipping);
-    ServerResponse<String> del(Integer userId, Integer shippingId);
-    ServerResponse update(Integer userId, Shipping shipping);
-    ServerResponse<Shipping> select(Integer userId, Integer shippingId);
-    ServerResponse<PageInfo> list(Integer userId, int pageNum, int pageSize);
+    Shipping add(Integer userId, Shipping shipping);
+    int del(Integer userId, Integer shippingId);
+    int update(Integer userId, Shipping shipping);
+    Shipping select(Integer userId, Integer shippingId);
+    PageInfo list(Integer userId, int pageNum, int pageSize);
 
 }

@@ -6,6 +6,8 @@ import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.bean.pojo.Shipping;
 import com.mmall.bean.pojo.User;
+import com.mmall.common.exception.CommonExceptions;
+import com.mmall.common.response.ResultBean;
 import com.mmall.service.IShippingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,53 +30,58 @@ public class ShippingController {
 
 
     @RequestMapping("/add")
-    public ServerResponse add(HttpSession session,Shipping shipping){
+    public ResultBean add(HttpSession session, Shipping shipping){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
-        return iShippingService.add(user.getId(),shipping);
+        Shipping currentShipping = iShippingService.add(user.getId(),shipping);
+        return new ResultBean(currentShipping);
     }
 
 
     @RequestMapping("/del")
-    public ServerResponse del(HttpSession session,Integer shippingId){
+    public ResultBean del(HttpSession session,Integer shippingId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
-        return iShippingService.del(user.getId(),shippingId);
+        iShippingService.del(user.getId(),shippingId);
+        return new ResultBean();
     }
 
     @RequestMapping("/update")
-    public ServerResponse update(HttpSession session,Shipping shipping){
+    public ResultBean update(HttpSession session,Shipping shipping){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
-        return iShippingService.update(user.getId(),shipping);
+        iShippingService.update(user.getId(),shipping);
+        return new ResultBean();
     }
 
 
     @RequestMapping("/select")
-    public ServerResponse<Shipping> select(HttpSession session,Integer shippingId){
+    public ResultBean<Shipping> select(HttpSession session,Integer shippingId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
-        return iShippingService.select(user.getId(),shippingId);
+        Shipping shipping = iShippingService.select(user.getId(),shippingId);
+        return new ResultBean<>(shipping);
     }
 
 
     @RequestMapping("/list")
-    public ServerResponse<PageInfo> list(@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+    public ResultBean<PageInfo> list(@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                                          @RequestParam(value = "pageSize",defaultValue = "10")int pageSize,
                                          HttpSession session){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user ==null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
-        return iShippingService.list(user.getId(),pageNum,pageSize);
+        PageInfo pageInfo = iShippingService.list(user.getId(),pageNum,pageSize);
+        return new ResultBean<>(pageInfo);
     }
 
 

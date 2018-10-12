@@ -311,4 +311,42 @@ public class CommonExceptions {
     
     同上
     
-@RequestParam(value = "parentId", defaultValue = "0")
+## 项目总结
+1.@RequestParam注解使用
+
+    父节点默认值：    
+    @RequestParam(value = "parentId", defaultValue = "0") int parentId
+    图片上传字段修改：
+    @RequestParam(value = "upload_file", required = false) MultipartFile file
+    分页参数默认值：
+    @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+    @RequestParam(value = "pageSize", defaultValue = "10") int pageSize
+
+2.Mybatis的where标签
+
+```xml
+    <where>
+      <if test="productName != null">
+        and name like #{productName}
+      </if>
+      <if test="productId != null">
+        and id = #{productId}
+      </if>
+    </where>
+```
+
+3.商业计算一定要用BigDecimal的String构造器
+![](src\main\resources\images\BigDecimalProblem.png)
+
+```java
+    System.out.println(0.05+0.01);
+    System.out.println(1.0-0.42);
+    System.out.println(4.015*100);
+    System.out.println(123.3/100);
+```
+    
+4.用逗号，切割字符串，并转化成List
+```java
+    //Splitter.on：用逗号，切割字符串，并转化成List
+    List<String> productList = Splitter.on(",").splitToList(productIds);
+```
