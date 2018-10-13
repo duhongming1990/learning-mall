@@ -360,3 +360,16 @@ public class CommonExceptions {
 6.Java Object
 ![](src/main/resources/images/JOPO-BO-VO.png)
 
+7.java远程debug调试tomcat
+
+    window系统，在catalina.bat里： 
+    SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+    
+    Linux系统，在catalina.sh里： 
+    CATALINA_OPTS="-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"
+RemoteDebugEclipse:
+![RemoteDebugEclipse.png](src/main/resources/images/RemoteDebugEclipse.png)
+RemoteDebugIDEA
+![RemoteDebugIDEA.png](src/main/resources/images/RemoteDebugIDEA.png)
+
+
