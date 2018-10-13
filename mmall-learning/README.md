@@ -336,7 +336,7 @@ public class CommonExceptions {
 ```
 
 3.商业计算一定要用BigDecimal的String构造器
-![](src\main\resources\images\BigDecimalProblem.png)
+![](src/main/resources/images/BigDecimalProblem.png)
 
 ```java
     System.out.println(0.05+0.01);
@@ -350,3 +350,13 @@ public class CommonExceptions {
     //Splitter.on：用逗号，切割字符串，并转化成List
     List<String> productList = Splitter.on(",").splitToList(productIds);
 ```
+
+5.安全漏洞防范
+
+横向越权：攻击者尝试访问与他拥有相同权限的用户的资源
+
+纵向越权：低级别攻击者尝试访问高级别用户的资源
+
+6.Java Object
+![](src/main/resources/images/JOPO-BO-VO.png)
+
