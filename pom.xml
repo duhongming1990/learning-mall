@@ -14,6 +14,8 @@
         <module>mall-install</module>
         <module>mall-database</module>
         <module>mall-init</module>
+        <module>mmall-learning</module>
+        <module>mall-pay</module>
     </modules>
 
     <build>
