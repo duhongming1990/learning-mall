@@ -27,20 +27,20 @@ public class CategoryManageController {
      * 添加商品类别
      *
      * @param session
-     * @param name
+     * @param categoryName
      * @param parentId
      * @return
      */
     @PostMapping("/add_category")
     public ResultBean<Category> addCategory(HttpSession session,
-                                          String name,
-                                          @RequestParam(value = "parentId", defaultValue = "0") int parentId) {
+                                            @RequestParam(value = "categoryName") String categoryName,
+                                            @RequestParam(value = "parentId", defaultValue = "0") int parentId) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
         iUserService.checkAdminRole(user);
-        Category category = iCategoryService.addCategory(name, parentId);
+        Category category = iCategoryService.addCategory(categoryName, parentId);
         return new ResultBean<>(category);
     }
 
@@ -48,17 +48,20 @@ public class CategoryManageController {
      * 更新商品类别
      *
      * @param session
-     * @param category
+     * @param categoryId
+     * @param categoryName
      * @return
      */
     @PostMapping("/set_category_name")
-    public ResultBean<String> updateCategory(HttpSession session, Category category) {
+    public ResultBean<String> updateCategory(HttpSession session,
+                                             @RequestParam(value = "categoryId") Integer categoryId,
+                                             @RequestParam(value = "categoryName") String categoryName) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
         }
         iUserService.checkAdminRole(user);
-        iCategoryService.updateCategory(category);
+        iCategoryService.updateCategory(categoryId,categoryName);
         return new ResultBean<>();
 
     }
@@ -71,7 +74,8 @@ public class CategoryManageController {
         }
         iUserService.checkAdminRole(user);
         //查询子节点的category信息,并且不递归,保持平级
-        return new ResultBean<>(iCategoryService.getChildrenParallelCategory(categoryId));
+        List<Category> categories = iCategoryService.getChildrenParallelCategory(categoryId);
+        return new ResultBean<>(categories);
     }
 
     @RequestMapping("/get_deep_category")
@@ -84,5 +88,15 @@ public class CategoryManageController {
         //查询当前节点的id和递归子节点的id
 //            0->10000->100000
         return new ResultBean<>(iCategoryService.selectCategoryAndChildrenById(categoryId));
+    }
+
+    @RequestMapping("/get_deep_category_plus")
+    public ResultBean<List<Integer>> getCategoryAndDeepChildrenCategoryPlus(HttpSession session, @RequestParam(value = "categoryId", defaultValue = "0") Integer categoryId) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            throw CommonExceptions.UserCommonException.USER_NOT_LOGIN.getCommonException();
+        }
+        iUserService.checkAdminRole(user);
+        return new ResultBean<>(iCategoryService.selectCategoryAndChildrenByParentIds(categoryId));
     }
 }

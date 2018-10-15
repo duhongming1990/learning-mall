@@ -8,8 +8,10 @@ public interface ICategoryService {
 
     Category addCategory(String categoryName, int parentId);
 
-    Integer updateCategory(Category category);
+    Integer updateCategory(Integer categoryId,String categoryName);
 
     List<Category> getChildrenParallelCategory(Integer categoryId);
     List<Integer> selectCategoryAndChildrenById(Integer categoryId);
+    List<Integer> selectCategoryAndChildrenByParentIds(Integer categoryId);
+
 }

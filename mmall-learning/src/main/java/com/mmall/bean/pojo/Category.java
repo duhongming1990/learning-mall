@@ -12,15 +12,18 @@ public class Category extends CommonBean {
 
     private Integer parentId;
 
+    private String parentIds;
+
     private String name;
 
     private Boolean status;
 
     private Integer sortOrder;
 
-    public Category(Integer id, Integer parentId, String name, Boolean status, Integer sortOrder, Date createTime, Date updateTime) {
+    public Category(Integer id,Integer parentId, String parentIds, String name, Boolean status, Integer sortOrder,Date createTime,Date updateTime) {
         this.id = id;
         this.parentId = parentId;
+        this.parentIds = parentIds;
         this.name = name;
         this.status = status;
         this.sortOrder = sortOrder;
@@ -46,6 +49,14 @@ public class Category extends CommonBean {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public String getParentIds() {
+        return parentIds;
+    }
+
+    public void setParentIds(String parentIds) {
+        this.parentIds = parentIds;
     }
 
     public String getName() {

@@ -2,8 +2,6 @@ package com.mmall.controller.portal;
 
 import com.github.pagehelper.PageInfo;
 import com.mmall.common.Const;
-import com.mmall.common.ResponseCode;
-import com.mmall.common.ServerResponse;
 import com.mmall.bean.pojo.Shipping;
 import com.mmall.bean.pojo.User;
 import com.mmall.common.exception.CommonExceptions;

@@ -1,78 +1,89 @@
 package com.mmall.common.response;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
  * 统一返回值类
+ *
  * @author 杜洪明
  * @creation 2018年10月10日
  */
-public class ResultBean<T> implements Serializable{
+//保证序列化json的时候,如果是null的对象,key也会消失
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+public class ResultBean<T> implements Serializable {
 
-		private static final long serialVersionUID = 1L;
-		
-		/**
-		 * 成功标识  
-		 */
-		public static final int SUCCESS = 0;
-		/**
-		 * 失败标识  
-		 */
-		public static final int FAIL = 1;
-		/**
-		 * 没有权限  
-		 */
-		public static final int NO_PERMISSION = 2;
-		/**
-		 * 输出消息  
-		 */
-		private String msg = "success";
-		/**
-		 * 输出状态  
-		 */
-		private int code = SUCCESS;
-		/**
-		 * 输出JavaBean  
-		 */
-		private T data;
+    private static final long serialVersionUID = 1L;
 
-		public ResultBean() {
-			super();
-		}
+    /**
+     * 成功标识
+     */
+    public static final int SUCCESS = 0;
+    /**
+     * 失败标识
+     */
+    public static final int FAIL = 1;
+    /**
+     * 没有权限
+     */
+    public static final int NO_PERMISSION = 2;
+    /**
+     * 输出消息
+     */
+    private String msg = "success";
+    /**
+     * 输出状态
+     */
+    private int code = SUCCESS;
+    /**
+     * 输出JavaBean
+     */
+    private T data;
 
-		public ResultBean(T data) {
-			super();
-			this.data = data;
-		}
+    public ResultBean() {
+        super();
+    }
 
-		public ResultBean(Throwable e) {
-			super();
-			this.msg = e.toString();
-			this.code = FAIL;
-		}
+    public ResultBean(T data) {
+        super();
+        this.data = data;
+    }
 
+    public ResultBean(Throwable e) {
+        super();
+        this.msg = e.toString();
+        this.code = FAIL;
+    }
 
-		public String getMsg() {
-			return msg;
-		}
+    //使之不在json序列化结果当中
+    @JsonIgnore
+    public boolean isSuccess() {
+        return this.code == SUCCESS;
+    }
 
-		public void setMsg(String msg) {
-			this.msg = msg;
-		}
+    public String getMsg() {
+        return msg;
+    }
 
-		public int getCode() {
-			return code;
-		}
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
-		public void setCode(int code) {
-			this.code = code;
-		}
+    public int getCode() {
+        return code;
+    }
 
-		public T getData() {
-			return data;
-		}
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-		public void setData(T data) {
-			this.data = data;
-		}
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }

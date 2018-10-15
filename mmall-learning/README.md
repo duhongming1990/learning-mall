@@ -311,6 +311,35 @@ public class CommonExceptions {
     
     同上
     
+6.递归查找所有子节点
+
+    递归遍历并且查数据库，性能极差以及非常危险
+
+6.1 新增parent_ids
+![](src\main\resources\images\ParentIdsSolution.png) 
+
+6.2 JAVA程序
+```java
+    private static final String SUFFIX_CHAT = ".";
+    private Category createParentIds(Category category) {
+        Integer parentId = category.getParentId();
+        if (parentId == null || parentId == 0) {
+            category.setParentIds(String.valueOf(0));
+        } else {
+            Category currentCategory = categoryMapper.selectByPrimaryKey(parentId);
+            category.setParentIds(currentCategory.getParentIds() + SUFFIX_CHAT + parentId);
+        }
+        return category;
+    }
+```
+6.3 SQL查询   
+```sql
+    select
+      id
+    from mmall_category
+    where parent_ids like CONCAT(#{parentIds,jdbcType=VARCHAR},'.',#{id,jdbcType=INTEGER},'%')
+```
+    
 ## 项目总结
 1.@RequestParam注解使用
 
