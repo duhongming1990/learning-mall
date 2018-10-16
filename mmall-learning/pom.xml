@@ -225,9 +225,35 @@
     </dependency>
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <deploy.type>dev</deploy.type>
+      </properties>
+    </profile>
+    <profile>
+      <id>beta</id>
+      <properties>
+        <deploy.type>beta</deploy.type>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <deploy.type>prod</deploy.type>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
     <finalName>mmall</finalName>
+
     <resources>
+
       <resource>
         <directory>src/main/java</directory>
         <includes>
@@ -236,6 +262,7 @@
         </includes>
         <filtering>false</filtering>
       </resource>
+
       <resource>
         <directory>src/main/resources</directory>
         <includes>
@@ -245,7 +272,18 @@
         </includes>
         <filtering>false</filtering>
       </resource>
+
+      <resource>
+        <directory>src/main/resources.${deploy.type}</directory>
+        <excludes>
+          <exclude>*.jsp</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
     </resources>
+
     <plugins>
       <!-- mybatis三剑客之mybatis-generator -->
       <plugin>
