@@ -1,8 +1,9 @@
 package com.mmall.service;
 
 import com.github.pagehelper.PageInfo;
+import com.mmall.bean.vo.OrderProductVo;
 import com.mmall.bean.vo.OrderVo;
-import com.mmall.common.ServerResponse;
+
 
 import java.util.Map;
 
@@ -10,22 +11,22 @@ import java.util.Map;
  * Created by geely
  */
 public interface IOrderService {
-    ServerResponse pay(Long orderNo, Integer userId, String path);
-    ServerResponse aliCallback(Map<String, String> params);
-    ServerResponse queryOrderPayStatus(Integer userId, Long orderNo);
-    ServerResponse createOrder(Integer userId, Integer shippingId);
-    ServerResponse<String> cancel(Integer userId, Long orderNo);
-    ServerResponse getOrderCartProduct(Integer userId);
-    ServerResponse<OrderVo> getOrderDetail(Integer userId, Long orderNo);
-    ServerResponse<PageInfo> getOrderList(Integer userId, int pageNum, int pageSize);
+    Map<String, String> pay(Long orderNo, Integer userId, String path);
+    int aliCallback(Map<String, String> params);
+    void queryOrderPayStatus(Integer userId, Long orderNo);
+    OrderVo createOrder(Integer userId, Integer shippingId);
+    int cancel(Integer userId, Long orderNo);
+    OrderProductVo getOrderCartProduct(Integer userId);
+    OrderVo getOrderDetail(Integer userId, Long orderNo);
+    PageInfo getOrderList(Integer userId, int pageNum, int pageSize);
 
 
 
     //backend
-    ServerResponse<PageInfo> manageList(int pageNum, int pageSize);
-    ServerResponse<OrderVo> manageDetail(Long orderNo);
-    ServerResponse<PageInfo> manageSearch(Long orderNo, int pageNum, int pageSize);
-    ServerResponse<String> manageSendGoods(Long orderNo);
+    PageInfo manageList(int pageNum, int pageSize);
+    OrderVo manageDetail(Long orderNo);
+    PageInfo manageSearch(Long orderNo, int pageNum, int pageSize);
+    String manageSendGoods(Long orderNo);
 
 
 }

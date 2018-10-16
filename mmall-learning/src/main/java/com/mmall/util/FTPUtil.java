@@ -80,7 +80,7 @@ public class FTPUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        File targetFile = new File("/Users/admin/mmall/mmall-learning/pom.xml");
+        File targetFile = new File("D:\\sync.ffs_db");
         FTPUtil.uploadFile(Lists.newArrayList(targetFile));
     }
 
