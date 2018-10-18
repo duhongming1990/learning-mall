@@ -14,3 +14,18 @@
 8 | mmall-learning | [第8章 购物车模块](mmall-learning/README.md)
 9 | mmall-learning | [第9章 收货地址管理模块开发](mmall-learning/README.md)
 10 | mmall-learning | [第10章 支付模块开发](mmall-learning/README.md)
+11 | mmall-learning | [第11章 订单管理模块开发](mmall-learning/README.md)
+12 | mmall-learning | [第12章 项目线上部署与自动化发布](mmall-learning/README.md)
+13 | mmall-learning | [第13章 总结与展望](mmall-learning/README.md)
+
+#### Java企业级电商项目架构演进之路 Tomcat集群与Redis分布式
+
+课程序号 | 课程编码 | 课程名称
+---|---|---
+1 | mmall-learning | [第1章 课程介绍](mmall-learning/README_2-4.md)
+2 | mmall-learning | [第2章 Lombok框架集成及原理解析](mmall-learning/README_2-4.md)
+3 | mmall-learning | [第3章 Maven环境隔离应用场景及验证实战](mmall-learning/README_2-4.md)
+4 | mmall-learning | [第4章 Tomcat集群演进及环境搭建](mmall-learning/README_2-4.md)
+5 | mmall-learning | [第5章 Redis基础强化](mmall-learning/README_5.md)
+6 | mmall-learning | [第6章 单点登录实战Coding及源码讲解](mmall-learning/README_6.md)
+

@@ -396,13 +396,19 @@ public class CommonExceptions {
     
     Linux系统，在catalina.sh里： 
     CATALINA_OPTS="-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"
+
+    EDAS平台，在配置JVM参数里：
+    -Dhsf.server.ip=192.168.100.136 -Xdebug -Xrunjdwp:transport=dt_socket,suspend=n,server=y,address=8000
+RemoteDebugEDAS：
+![RemoteDebugEDAS.png](src/main/resources/images/RemoteDebugEDAS.png)    
 RemoteDebugEclipse:
 ![RemoteDebugEclipse.png](src/main/resources/images/RemoteDebugEclipse.png)
 RemoteDebugIDEA:
 ![RemoteDebugIDEA.png](src/main/resources/images/RemoteDebugIDEA.png)
 
 8.FTP软件与验证支付宝回调工具
-FileZilla Server
-花生壳内网版
+
+    FileZilla Server
+    花生壳内网版
 
 

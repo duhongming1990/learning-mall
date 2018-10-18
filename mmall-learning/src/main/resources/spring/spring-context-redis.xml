@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:mmall.properties"/>
+    <context:component-scan base-package="com.mmall.util"/>
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!--最大连接数-->
+        <property name="maxTotal" value="${redis.max.total}"/>
+        <!--在jedispool中最大的idle状态(空闲的)的jedis实例的个数-->
+        <property name="maxIdle" value="${redis.max.idle}"/>
+        <!--在jedispool中最小的idle状态(空闲的)的jedis实例的个数-->
+        <property name="minIdle" value="${redis.min.idle}"/>
+        <!--在borrow一个jedis实例的时候，是否要进行验证操作，如果赋值true。则得到的jedis实例肯定是可以用的。-->
+        <property name="testOnBorrow" value="${redis.test.borrow}"/>
+        <!--在return一个jedis实例的时候，是否要进行验证操作，如果赋值true。则放回jedispool的jedis实例肯定是可以用的。-->
+        <property name="testOnReturn" value="${redis.test.return}"/>
+        <!--连接耗尽的时候，是否阻塞，false会抛出异常，true阻塞直到超时。默认为true。-->
+        <property name="blockWhenExhausted" value="true"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="${redis.ip}"/>
+        <constructor-arg name="port" value="${redis.port}"/>
+        <constructor-arg name="password" value="${redis.password}"/>
+        <constructor-arg name="timeout" value="2000"/>
+    </bean>
+</beans>
