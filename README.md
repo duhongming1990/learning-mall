@@ -22,10 +22,10 @@
 
 课程序号 | 课程编码 | 课程名称
 ---|---|---
-1 | mmall-learning | [第1章 课程介绍](mmall-learning/README_2-4.md)
-2 | mmall-learning | [第2章 Lombok框架集成及原理解析](mmall-learning/README_2-4.md)
-3 | mmall-learning | [第3章 Maven环境隔离应用场景及验证实战](mmall-learning/README_2-4.md)
-4 | mmall-learning | [第4章 Tomcat集群演进及环境搭建](mmall-learning/README_2-4.md)
-5 | mmall-learning | [第5章 Redis基础强化](mmall-learning/README_5.md)
+1 | mmall-learning | [第1章 课程介绍](mmall-learning/README_2-5.md)
+2 | mmall-learning | [第2章 Lombok框架集成及原理解析](mmall-learning/README_2-5.md)
+3 | mmall-learning | [第3章 Maven环境隔离应用场景及验证实战](mmall-learning/README_2-5.md)
+4 | mmall-learning | [第4章 Tomcat集群演进及环境搭建](mmall-learning/README_2-5.md)
+5 | mmall-learning | [第5章 Redis基础强化](mmall-learning/README_2-5.md)
 6 | mmall-learning | [第6章 单点登录实战Coding及源码讲解](mmall-learning/README_6.md)
 

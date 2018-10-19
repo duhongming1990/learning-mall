@@ -6,6 +6,7 @@ import com.mmall.common.exception.CommonExceptions;
 import com.mmall.dao.UserMapper;
 import com.mmall.bean.pojo.User;
 import com.mmall.service.IUserService;
+import com.mmall.util.RedisPoolUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private RedisPoolUtil redisPoolUtil;
 
     @Override
     public User login(String username, String password) {
@@ -122,7 +125,8 @@ public class UserServiceImpl implements IUserService {
         int resultCount = userMapper.checkAnswer(username, question, answer);
         if (resultCount > 0) {
             String forgetToken = UUID.randomUUID().toString();
-            TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
+//            TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
+            redisPoolUtil.set(TokenCache.TOKEN_PREFIX + username, forgetToken);
             return forgetToken;
         } else {
             throw CommonExceptions.UserCommonException.ANSWER_ERROR.getCommonException();
@@ -136,7 +140,9 @@ public class UserServiceImpl implements IUserService {
         }
         CheckNotExistValid(username, Const.USERNAME);
 
-        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+//        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+        String token = redisPoolUtil.get(TokenCache.TOKEN_PREFIX + username);
+
         if (StringUtils.isBlank(token)) {
             throw CommonExceptions.UserCommonException.TOKEN_INVALID_EXPIRED.getCommonException();
         }

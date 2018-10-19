@@ -1,45 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mmall.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.mmall.bean.pojo.User" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
-  </resultMap>
-  <parameterMap id="BaseParameterMap" type="com.mmall.bean.pojo.User" ></parameterMap>
+  <!--<resultMap id="BaseResultMap" type="com.mmall.bean.pojo.User" >-->
+    <!--<constructor >-->
+      <!--<idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />-->
+      <!--<arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+      <!--<arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />-->
+      <!--<arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />-->
+      <!--<arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <!--<parameterMap id="BaseParameterMap" type="com.mmall.bean.pojo.User" ></parameterMap>-->
   <sql id="Base_Column_List" >
     id, username, password, email, phone, question, answer, role, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+  <select id="selectByPrimaryKey" resultType="User" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from mmall_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mmall_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mmall.bean.pojo.User" >
-    insert into mmall_user (id, username, password,
-      email, phone, question, 
-      answer, role, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
-      #{answer,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, now(),
-      now())
+
+  <insert id="insert" parameterType="User" >
+    insert into mmall_user (
+      id,
+      username,
+      password,
+      email,
+      phone,
+      question,
+      answer,
+      role,
+      create_time,
+      update_time
+    )
+    values (
+      #{id,jdbcType=INTEGER},
+      #{username,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR},
+      #{question,jdbcType=VARCHAR},
+      #{answer,jdbcType=VARCHAR},
+      #{role,jdbcType=INTEGER},
+      now(),
+      now()
+    )
   </insert>
-  <insert id="insertSelective" parameterType="com.mmall.bean.pojo.User" >
+
+  <insert id="insertSelective" parameterType="User" >
     insert into mmall_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -106,7 +126,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.bean.pojo.User" >
+
+  <update id="updateByPrimaryKeySelective" parameterType="User" >
     update mmall_user
     <set >
       <if test="username != null" >
@@ -139,7 +160,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mmall.bean.pojo.User" >
+
+  <update id="updateByPrimaryKey" parameterType="User" >
     update mmall_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -165,11 +187,11 @@
     where email = #{email}
   </select>
 
-  <select id="selectLogin" resultMap="BaseResultMap">
+  <select id="selectLogin" resultType="User">
     select
     <include refid="Base_Column_List"/>
     from mmall_user
-    where username = #{username} and password = #{password}
+    where username = #{username} and password = #{password} and 1=1
   </select>
 
   <select id="selectQuestionByUsername" resultType="java.lang.String">
@@ -203,7 +225,5 @@
     where email = #{email}
     and id != #{userId}
   </select>
-
-
 
 </mapper>

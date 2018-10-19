@@ -5,15 +5,22 @@ import com.mmall.common.exception.CommonExceptions;
 import com.mmall.common.response.ResultBean;
 import com.mmall.bean.pojo.User;
 import com.mmall.service.IUserService;
+import com.mmall.util.CookieUtil;
+import com.mmall.util.JsonUtil;
+import com.mmall.util.RedisPoolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private RedisPoolUtil redisPoolUtil;
     @Autowired
     private IUserService iUserService;
 
@@ -25,9 +32,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/login")
-    public ResultBean<User> login(String username, String password, HttpSession session){
+    public ResultBean<User> login(String username, String password, HttpSession session,HttpServletResponse httpServletResponse){
         User user = iUserService.login(username,password);
         session.setAttribute(Const.CURRENT_USER,user);
+        CookieUtil.writeLoginToken(httpServletResponse,session.getId());
+        redisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(user),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         return new ResultBean<>(user);
     }
 
@@ -37,8 +46,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/logout")
-    public ResultBean<String> logout(HttpSession session){
+    public ResultBean<String> logout(HttpSession session, HttpServletResponse response, HttpServletRequest request){
         session.removeAttribute(Const.CURRENT_USER);
+        CookieUtil.delLoginToken(request,response);
+        redisPoolUtil.del(session.getId());
         return new ResultBean<>();
     }
 
@@ -71,8 +82,12 @@ public class UserController {
      * @return
      */
     @PostMapping("/get_user_info")
-    public ResultBean<User> getUserInfo(HttpSession session){
+    public ResultBean<User> getUserInfo(HttpSession session,HttpServletRequest request){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
+
+        String loginToken = CookieUtil.readLoginToken(request);
+        String userJsonStr = redisPoolUtil.get(loginToken);
+        user = JsonUtil.string2Obj(userJsonStr,User.class);
         if(user != null){
             return new ResultBean<>(user);
         }else{

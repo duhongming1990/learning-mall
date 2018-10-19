@@ -14,6 +14,9 @@ import org.codehaus.jackson.type.TypeReference;
 import java.text.SimpleDateFormat;
 
 /**
+ * 需求：
+ * 1.显示所有字段
+ * 2.标准时间格式
  * Created by geely
  */
 @Slf4j
