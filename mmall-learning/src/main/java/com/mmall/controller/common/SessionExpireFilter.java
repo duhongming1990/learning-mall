@@ -1,10 +1,10 @@
 package com.mmall.controller.common;
 
 
+import com.alibaba.fastjson.JSON;
 import com.mmall.bean.pojo.User;
 import com.mmall.common.Const;
 import com.mmall.util.CookieUtil;
-import com.mmall.util.JsonUtil;
 import com.mmall.util.RedisPoolUtil;
 import com.mmall.util.SpringContextHolder;
 import org.apache.commons.lang.StringUtils;
@@ -34,7 +34,7 @@ public class SessionExpireFilter implements Filter {
             //如果不为空的话，符合条件，继续拿user信息
 
             String userJsonStr = redisPoolUtil.get(loginToken);
-            User user = JsonUtil.string2Obj(userJsonStr, User.class);
+            User user = JSON.parseObject(userJsonStr,User.class);
             if (user != null) {
                 //如果user不为空，则重置session的时间，即调用expire命令
                 redisPoolUtil.expire(loginToken, Const.RedisCacheExtime.REDIS_SESSION_EXTIME);

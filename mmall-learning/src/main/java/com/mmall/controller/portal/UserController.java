@@ -35,8 +35,8 @@ public class UserController {
     public ResultBean<User> login(String username, String password, HttpSession session,HttpServletResponse httpServletResponse){
         User user = iUserService.login(username,password);
         session.setAttribute(Const.CURRENT_USER,user);
-        CookieUtil.writeLoginToken(httpServletResponse,session.getId());
-        redisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(user),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
+//        CookieUtil.writeLoginToken(httpServletResponse,session.getId());
+//        redisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(user),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         return new ResultBean<>(user);
     }
 
@@ -48,8 +48,8 @@ public class UserController {
     @PostMapping("/logout")
     public ResultBean<String> logout(HttpSession session, HttpServletResponse response, HttpServletRequest request){
         session.removeAttribute(Const.CURRENT_USER);
-        CookieUtil.delLoginToken(request,response);
-        redisPoolUtil.del(session.getId());
+//        CookieUtil.delLoginToken(request,response);
+//        redisPoolUtil.del(session.getId());
         return new ResultBean<>();
     }
 
@@ -85,9 +85,9 @@ public class UserController {
     public ResultBean<User> getUserInfo(HttpSession session,HttpServletRequest request){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
 
-        String loginToken = CookieUtil.readLoginToken(request);
-        String userJsonStr = redisPoolUtil.get(loginToken);
-        user = JsonUtil.string2Obj(userJsonStr,User.class);
+//        String loginToken = CookieUtil.readLoginToken(request);
+//        String userJsonStr = redisPoolUtil.get(loginToken);
+//        user = JsonUtil.string2Obj(userJsonStr,User.class);
         if(user != null){
             return new ResultBean<>(user);
         }else{

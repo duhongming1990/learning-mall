@@ -32,12 +32,13 @@ public class ControllerAOP {
 	public void webLog() {
 	}
 
-	@Around("webLog()")
+
 	/**
 	 * 对返回值为resultbean的方法进行切面，获取其入参
 	 * @param pjp
 	 * @return
 	 */
+	@Around("webLog()")
 	public Object handlerControllerMethod(ProceedingJoinPoint pjp) {
 
 		long startTime = System.currentTimeMillis();
@@ -62,12 +63,13 @@ public class ControllerAOP {
 
 	}
     
-	@AfterReturning(returning = "ret", pointcut = "webLog()")
+
 	/**
 	 * 对切面方法进行返回值处理
 	 * @param ret
 	 * @throws Throwable
 	 */
+	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterReturning(Object ret) throws Throwable {
 		// 处理完请求，返回内容
 		logger.info("RESPONSE : " + new GsonBuilder().create().toJson(ret));
@@ -90,16 +92,16 @@ public class ControllerAOP {
 		} else if (e instanceof IOException) {
 			result.setMsg(e.getLocalizedMessage()+"找不到文件夹");
 			result.setCode(ResultBean.FAIL);
-		}
-		else if(e instanceof CommonException){}{
+		} else if(e instanceof CommonException){
 			logger.error(pjp.getSignature() + " exception ", e);
 			CommonException commonException = (CommonException)e;
 			result.setCode(commonException.getErrorCode());
 			result.setMsg(commonException.getErrorInfo());
 			// 未知异常是应该重点关注的，这里可以做其他操作，如通知邮件，单独写到某个文件等等。
 		}
+		result.setMsg(e.getLocalizedMessage());
+		result.setCode(ResultBean.FAIL);
 		return result;
-
 	}
 
 }

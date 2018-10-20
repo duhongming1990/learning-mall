@@ -29,4 +29,7 @@
 5 | mmall-learning | [第5章 Redis基础强化](mmall-learning/README_2-5.md)
 6 | mmall-learning | [第6章 单点登录实战Coding及源码讲解](mmall-learning/README_6.md)
 7 | mmall-learning | [第7章 Redis分布式算法原理、分布式连接池实战及验证](mmall-learning/README_7.md)
+8 | mmall-learning | [第8章 Spring Session框架集成零侵入实现单点登录](mmall-learning/README_8.md)
+9 | mmall-learning | [第9章 SpringMVC全局异常处理](mmall-learning/README_9-10.md)
+10 | mmall-learning | [第10章 SpringMVC拦截器实现权限统一校验](mmall-learning/README_9-10.md)
 
