@@ -27,7 +27,6 @@ public class UserManageController {
     @ResponseBody
     public ResultBean<User> login(String username, String password, HttpSession session){
         User user = iUserService.login(username,password);
-        iUserService.checkAdminRole(user);
         session.setAttribute(Const.CURRENT_USER,user);
         return new ResultBean<>(user);
     }

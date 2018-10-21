@@ -1,10 +1,13 @@
 package com.mmall.service;
 
 import com.github.pagehelper.PageInfo;
+import com.mmall.bean.pojo.Order;
 import com.mmall.bean.vo.OrderProductVo;
 import com.mmall.bean.vo.OrderVo;
+import org.apache.ibatis.annotations.Param;
 
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +30,10 @@ public interface IOrderService {
     OrderVo manageDetail(Long orderNo);
     PageInfo manageSearch(Long orderNo, int pageNum, int pageSize);
     String manageSendGoods(Long orderNo);
+
+
+    //hour个小时以内未付款的订单，进行关闭
+    void closeOrder(int hour);
 
 
 }

@@ -9,62 +9,70 @@ import com.mmall.service.IOrderService;
 import com.mmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by geely
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/21 12:43
  */
-
-@Controller
+@RestController
 @RequestMapping("/manage/order")
 public class OrderManageController {
 
     @Autowired
-    private IUserService iUserService;
-    @Autowired
     private IOrderService iOrderService;
 
-    @RequestMapping("list.do")
-    @ResponseBody
-    public ResultBean<PageInfo> orderList(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                          @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+    /**
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("list.do")
+    public ResultBean<PageInfo> orderList(
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         PageInfo pageInfo = iOrderService.manageList(pageNum, pageSize);
-        //填充我们增加产品的业务逻辑
         return new ResultBean<>(pageInfo);
     }
 
-    @RequestMapping("detail.do")
-    @ResponseBody
-    public ResultBean<OrderVo> orderDetail(HttpSession session, Long orderNo) {
-        //填充我们增加产品的业务逻辑
+    /**
+     *
+     * @param orderNo
+     * @return
+     */
+    @GetMapping("detail.do")
+    public ResultBean<OrderVo> orderDetail(Long orderNo) {
         OrderVo orderVo = iOrderService.manageDetail(orderNo);
         return new ResultBean<>(orderVo);
     }
 
-
-    @RequestMapping("search.do")
-    @ResponseBody
-    public ResultBean<PageInfo> orderSearch(HttpSession session, Long orderNo, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
-
-        //填充我们增加产品的业务逻辑
+    /**
+     *
+     * @param orderNo
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("search.do")
+    public ResultBean<PageInfo> orderSearch(
+            Long orderNo,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         PageInfo pageInfo = iOrderService.manageSearch(orderNo, pageNum, pageSize);
         return new ResultBean<>(pageInfo);
     }
 
-
-    @RequestMapping("send_goods.do")
-    @ResponseBody
-    public ResultBean<String> orderSendGoods(HttpSession session, Long orderNo) {
-
-        User user = (User) session.getAttribute(Const.CURRENT_USER);
-
-        //填充我们增加产品的业务逻辑
+    /**
+     *
+     * @param orderNo
+     * @return
+     */
+    @PostMapping("send_goods.do")
+    public ResultBean<String> orderSendGoods(Long orderNo) {
         String s = iOrderService.manageSendGoods(orderNo);
         return new ResultBean<>(s);
     }

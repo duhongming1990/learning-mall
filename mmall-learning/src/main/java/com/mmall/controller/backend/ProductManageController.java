@@ -19,9 +19,10 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
- * Created by geely
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/21 12:46
  */
-
 @RestController
 @RequestMapping("/manage/product")
 public class ProductManageController {
@@ -31,9 +32,12 @@ public class ProductManageController {
     @Autowired
     private IFileService iFileService;
 
+    /**
+     * @param product
+     * @return
+     */
     @PostMapping("/save")
-    public ResultBean productSave(HttpSession session, Product product) {
-        //填充我们增加产品的业务逻辑
+    public ResultBean productSave(Product product) {
         iProductService.saveOrUpdateProduct(product);
         return new ResultBean<>();
     }
@@ -41,13 +45,12 @@ public class ProductManageController {
     /**
      * 商品状态
      *
-     * @param session
      * @param productId
      * @param status
      * @return
      */
     @PostMapping("/set_sale_status")
-    public ResultBean setSaleStatus(HttpSession session, Integer productId, Integer status) {
+    public ResultBean setSaleStatus(Integer productId, Integer status) {
         iProductService.setSaleStatus(productId, status);
         return new ResultBean<>();
     }
@@ -55,12 +58,11 @@ public class ProductManageController {
     /**
      * 产品详情
      *
-     * @param session
      * @param productId
      * @return
      */
     @GetMapping("/detail")
-    public ResultBean<ProductDetailVo> getDetail(HttpSession session, Integer productId) {
+    public ResultBean<ProductDetailVo> getDetail(Integer productId) {
         ProductDetailVo productDetailVo = iProductService.manageProductDetail(productId);
         return new ResultBean<>(productDetailVo);
     }
@@ -68,16 +70,14 @@ public class ProductManageController {
     /**
      * 商品列表
      *
-     * @param session
      * @param pageNum
      * @param pageSize
      * @return
      */
     @GetMapping("/list")
-    public ResultBean<PageInfo> getList(HttpSession session,
-                                        @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-        //填充业务
+    public ResultBean<PageInfo> getList(
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         PageInfo pageInfo = iProductService.getProductList(pageNum, pageSize);
         return new ResultBean<>(pageInfo);
     }
@@ -85,7 +85,6 @@ public class ProductManageController {
     /**
      * 商品搜索
      *
-     * @param session
      * @param productName
      * @param productId
      * @param pageNum
@@ -93,18 +92,23 @@ public class ProductManageController {
      * @return
      */
     @GetMapping("/search")
-    public ResultBean<PageInfo> productSearch(HttpSession session, String productName, Integer productId,
-                                        @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
-        //填充业务
+    public ResultBean<PageInfo> productSearch(
+            String productName, Integer productId,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         PageInfo pageInfo = iProductService.searchProduct(productName, productId, pageNum, pageSize);
         return new ResultBean<>(pageInfo);
     }
 
+    /**
+     * @param file
+     * @param request
+     * @return
+     */
     @PostMapping("/upload")
-    public ResultBean<Map> upload(HttpSession session,
-                                 @RequestParam(value = "upload_file", required = false) MultipartFile file,
-                                 HttpServletRequest request) {
+    public ResultBean<Map> upload(
+            @RequestParam(value = "upload_file", required = false) MultipartFile file,
+            HttpServletRequest request) {
         String path = request.getSession().getServletContext().getRealPath("upload");
         String targetFileName = iFileService.upload(file, path);
         String url = PropertiesUtil.getProperty("ftp.server.http.prefix") + targetFileName;
@@ -116,10 +120,16 @@ public class ProductManageController {
     }
 
 
+    /**
+     * @param file
+     * @param request
+     * @param response
+     * @return
+     */
     @PostMapping("/richtext_img_upload")
-    public Map richtextImgUpload(HttpSession session,
-                                 @RequestParam(value = "upload_file", required = false) MultipartFile file,
-                                 HttpServletRequest request, HttpServletResponse response) {
+    public Map richtextImgUpload(
+            @RequestParam(value = "upload_file", required = false) MultipartFile file,
+            HttpServletRequest request, HttpServletResponse response) {
         Map resultMap = Maps.newHashMap();
         //富文本中对于返回值有自己的要求,我们使用是simditor所以按照simditor的要求进行返回
 //        {

@@ -408,7 +408,7 @@ RemoteDebugIDEA:
 
 8.FTP软件与验证支付宝回调工具
 
-    FileZilla Server
-    花生壳内网版
+    FileZilla Server for Windows
+    花生壳内网版（APP Store下载）
 
 

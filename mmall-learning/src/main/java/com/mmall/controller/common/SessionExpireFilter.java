@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * Created by geely
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/10/21 12:49
  */
+@Deprecated
 public class SessionExpireFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
