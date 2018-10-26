@@ -196,3 +196,4 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
 # 第11章 SpringMVC RESTful原理及改造实战
 @PathVariable
+PUT操作：需要在header中声明Content-Type:application/x-www-form-urlencoded

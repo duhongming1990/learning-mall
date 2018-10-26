@@ -34,4 +34,5 @@
 10 | mmall-learning | [第10章 SpringMVC拦截器实现权限统一校验](mmall-learning/README_9-11.md)
 11 | mmall-learning | [第11章 SpringMVC RESTful原理及改造实战](mmall-learning/README_9-11.md)
 12 | mmall-learning | [第12章 Spring Schedule实现定时关单](mmall-learning/README_12.md)
+13 | mmall-learning | [第13-18章 Redis分布式锁原理](mmall-learning/README_12.md)
 

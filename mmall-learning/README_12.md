@@ -20,5 +20,10 @@ eg：
     无主键，Table-Level Lock：name='iphone'
     主键不明确，Table-Level Lock：id <> 66
     主键不明确，Table-Level Lock：id like 66
-    
+ 
+# 12.3 insert ignore into
+insert ignore into 保证SQL语句不报错，通过影响行数判断是否成功！ 
+
 # 第13章 Redis分布式锁原理
+redisson
+wait_time设置成零
