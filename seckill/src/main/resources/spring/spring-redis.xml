@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${jedis.pool.config.maxIdle}"/>
+        <property name="maxTotal" value="${jedis.pool.config.maxTotal}"/>
+        <property name="maxWaitMillis" value="${jedis.pool.config.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${jedis.pool.config.testOnBorrow}"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="${jedis.pool.host}"/>
+        <constructor-arg name="port" value="${jedis.pool.port}"/>
+    </bean>
+
+    <context:component-scan base-package="org.seckill.dao.cache"/>
+</beans>
