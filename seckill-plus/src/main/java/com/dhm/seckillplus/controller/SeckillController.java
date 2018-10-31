@@ -3,7 +3,6 @@ package com.dhm.seckillplus.controller;
 import com.dhm.seckillplus.domain.Order;
 import com.dhm.seckillplus.domain.SeckillOrder;
 import com.dhm.seckillplus.domain.User;
-import com.dhm.seckillplus.result.CodeMsg;
 import com.dhm.seckillplus.service.GoodsService;
 import com.dhm.seckillplus.service.OrderService;
 import com.dhm.seckillplus.service.SeckillService;
@@ -44,13 +43,13 @@ public class SeckillController {
     	GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
     	int stock = goods.getStockCount();
     	if(stock <= 0) {
-    		model.addAttribute("errmsg", CodeMsg.MIAO_SHA_OVER.getMsg());
+//    		model.addAttribute("errmsg", CodeMsg.MIAO_SHA_OVER.getMsg());
     		return "miaosha_fail";
     	}
     	//判断是否已经秒杀到了
     	SeckillOrder order = orderService.getSeckillOrderByUserIdGoodsId(user.getId(), goodsId);
     	if(order != null) {
-    		model.addAttribute("errmsg", CodeMsg.REPEATE_MIAOSHA.getMsg());
+//    		model.addAttribute("errmsg", CodeMsg.REPEATE_MIAOSHA.getMsg());
     		return "miaosha_fail";
     	}
     	//减库存 下订单 写入秒杀订单

@@ -1,10 +1,9 @@
 package com.dhm.seckillplus.service;
 
+import com.dhm.seckillplus.common.exception.CommonExceptions;
 import com.dhm.seckillplus.dao.mysql.UserDao;
 import com.dhm.seckillplus.dao.redis.RedisDao;
 import com.dhm.seckillplus.domain.User;
-import com.dhm.seckillplus.exception.GlobalException;
-import com.dhm.seckillplus.result.CodeMsg;
 import com.dhm.seckillplus.util.MD5Util;
 import com.dhm.seckillplus.util.UUIDUtil;
 import com.dhm.seckillplus.vo.LoginVo;
@@ -28,22 +27,19 @@ public class UserService {
     private RedisDao redisDao;
 
     public String login(HttpServletResponse response, LoginVo loginVo) {
-        if(loginVo == null) {
-            throw new GlobalException(CodeMsg.SERVER_ERROR);
-        }
         String mobile = loginVo.getMobile();
         String formPass = loginVo.getPassword();
         //判断手机号是否存在
         User user = userDao.getById(Long.parseLong(mobile));
         if(user == null) {
-            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+            throw CommonExceptions.UserCommonException.MOBILE_NOT_EXIST.getCommonException();
         }
         //验证密码
         String dbPass = user.getPassword();
         String saltDB = user.getSalt();
         String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
         if(!calcPass.equals(dbPass)) {
-            throw new GlobalException(CodeMsg.PASSWORD_ERROR);
+            throw CommonExceptions.UserCommonException.PASSWORD_ERROR.getCommonException();
         }
         //生成cookie
         String token = UUIDUtil.uuid();

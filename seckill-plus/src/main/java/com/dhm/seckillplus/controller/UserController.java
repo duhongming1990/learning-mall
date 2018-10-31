@@ -1,19 +1,21 @@
 package com.dhm.seckillplus.controller;
 
+import com.dhm.seckillplus.common.response.ResultBean;
 import com.dhm.seckillplus.domain.User;
-import com.dhm.seckillplus.result.Result;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-@Controller
+import org.springframework.web.bind.annotation.RestController;
+/**
+    @Author duhongming
+    @Email 935720334@qq.com
+    @Date 2018/10/31 20:53
+*/
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/to_list")
-    @ResponseBody
-    public Result<User> list(User user){
-        System.out.println(user.toString());
-        return Result.success(user);
+    @PostMapping("/to_list")
+    public ResultBean<User> list(User user){
+        return new ResultBean<>(user);
     }
 }
