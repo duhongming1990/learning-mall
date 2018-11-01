@@ -1,3 +1,0 @@
-1.在windows上录好jmx
-2.在linux上执行命令：sh jmeter.sh -n -t XXX.jmx -l result.jtl
-3.把result.jtl导入到jmeter

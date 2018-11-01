@@ -117,7 +117,7 @@ public class CloseOrderTask {
      * Redisson分布式锁实现
      * @throws InterruptedException
      */
-    @Scheduled(cron="0 */1 * * * ?")//每1分钟(每个1分钟的整数倍)
+//    @Scheduled(cron="0 */1 * * * ?")//每1分钟(每个1分钟的整数倍)
     public void closeOrderTaskV4() throws InterruptedException {
         RLock lock = redissonManager.getRedisson().getLock(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK);
         boolean getLock = false;

@@ -270,3 +270,7 @@ server {
 [Mac上Tomcat集群及Nginx负载均衡配置](https://my.oschina.net/duhongming52java/blog/1796375)
 
 [Redis 那些事儿](https://my.oschina.net/duhongming52java/blog/1647877)
+redis主从配置：
+```
+slaveof <masterip> <masterport>
+```

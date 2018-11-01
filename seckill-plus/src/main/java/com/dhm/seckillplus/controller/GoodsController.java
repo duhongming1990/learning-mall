@@ -1,5 +1,6 @@
 package com.dhm.seckillplus.controller;
 
+import com.dhm.seckillplus.common.prefix.KeyPrefixs;
 import com.dhm.seckillplus.dao.redis.RedisDao;
 import com.dhm.seckillplus.domain.User;
 import com.dhm.seckillplus.service.GoodsService;
@@ -20,7 +21,11 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
+/**
+ * @Author duhongming
+ * @Email 19919902414@189.cn
+ * @Date 2018/11/1 16:01
+ */
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {
@@ -49,7 +54,7 @@ public class GoodsController {
 //        List<GoodsVo> goodsList = goodsService.listGoodsVo();
 //        model.addAttribute("goodsList", goodsList);
         //取缓存
-        String html = redisDao.get("goods_list");
+        String html = (String) redisDao.get(KeyPrefixs.GoodsKey.GOODS_LIST.getBasePrefix(),"",String.class);
         if(!StringUtils.isEmpty(html)) {
             return html;
         }
@@ -61,7 +66,7 @@ public class GoodsController {
         //手动渲染
         html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
         if(!StringUtils.isEmpty(html)) {
-            redisDao.set("goods_list",html,60);
+            redisDao.set(KeyPrefixs.GoodsKey.GOODS_LIST.getBasePrefix(),"",html);
         }
         return html;
     }
@@ -72,7 +77,7 @@ public class GoodsController {
                          Model model,User user,
                          @PathVariable("goodsId")long goodsId) {
         //取缓存
-        String html = redisDao.get("goods_detail:"+goodsId);
+        String html = (String) redisDao.get(KeyPrefixs.GoodsKey.GOODS_DETIAL.getBasePrefix(),String.valueOf(goodsId),String.class);
         if(!StringUtils.isEmpty(html)) {
             return html;
         }
@@ -106,7 +111,7 @@ public class GoodsController {
         //手动渲染
         html = thymeleafViewResolver.getTemplateEngine().process("goods_detail", ctx);
         if(!StringUtils.isEmpty(html)) {
-            redisDao.set("goods_detail:"+goodsId,html,60);
+            redisDao.set(KeyPrefixs.GoodsKey.GOODS_DETIAL.getBasePrefix(),String.valueOf(goodsId),html);
         }
         return html;
     }

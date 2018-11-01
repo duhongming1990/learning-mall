@@ -1,6 +1,7 @@
 package com.dhm.seckillplus.service;
 
 import com.dhm.seckillplus.common.exception.CommonExceptions;
+import com.dhm.seckillplus.common.prefix.KeyPrefixs;
 import com.dhm.seckillplus.dao.mysql.UserDao;
 import com.dhm.seckillplus.dao.redis.RedisDao;
 import com.dhm.seckillplus.domain.User;
@@ -26,7 +27,7 @@ public class UserService {
     @Autowired
     private RedisDao redisDao;
 
-    public String login(HttpServletResponse response, LoginVo loginVo) {
+    public User login(HttpServletResponse response, LoginVo loginVo) {
         String mobile = loginVo.getMobile();
         String formPass = loginVo.getPassword();
         //判断手机号是否存在
@@ -44,11 +45,11 @@ public class UserService {
         //生成cookie
         String token = UUIDUtil.uuid();
         addCookie(response, token, user);
-        return token;
+        return user;
     }
 
     private void addCookie(HttpServletResponse response, String token, User user) {
-        redisDao.setObject(USER_KEY+token,user,CACHE_SECONDS);
+        redisDao.set(KeyPrefixs.UserKey.TOKEN.getBasePrefix(),token,user);
         Cookie cookie = new Cookie(COOKI_NAME_TOKEN, token);
         cookie.setMaxAge(CACHE_SECONDS);
         cookie.setPath("/");
@@ -59,7 +60,7 @@ public class UserService {
         if(StringUtils.isEmpty(token)) {
             return null;
         }
-        User user = (User) redisDao.getObject(USER_KEY+token, User.class);
+        User user = (User) redisDao.get(KeyPrefixs.UserKey.TOKEN.getBasePrefix(),token, User.class);
         //延长有效期
         if(user != null) {
             addCookie(response, token, user);

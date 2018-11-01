@@ -1,6 +1,7 @@
 package com.dhm.seckillplus.controller;
 
 import com.dhm.seckillplus.common.response.ResultBean;
+import com.dhm.seckillplus.domain.User;
 import com.dhm.seckillplus.service.UserService;
 import com.dhm.seckillplus.vo.LoginVo;
 import lombok.extern.slf4j.Slf4j;
@@ -33,9 +34,9 @@ public class LoginController {
     
     @RequestMapping("/do_login")
     @ResponseBody
-    public ResultBean<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
+    public ResultBean<User> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
     	//登录
-    	String token = userService.login(response, loginVo);
-    	return new ResultBean<>(token);
+    	User user = userService.login(response, loginVo);
+    	return new ResultBean<>(user);
     }
 }
