@@ -6,6 +6,29 @@ package com.mmall.common.exception;
  * @Date 2018/8/31 15:45
  */
 public class CommonExceptions {
+    public enum SysCommonException{
+
+        PARAMETER_NOT_ILLEGAL(new CommonException(-9999, "传入参数非法！"));
+        private CommonException commonException;
+
+        SysCommonException(CommonException commonException){
+            this.commonException = commonException;
+        }
+
+        public CommonException getCommonException() {
+            return commonException;
+        }
+
+        public void setCommonException(CommonException commonException) {
+            this.commonException = commonException;
+        }
+
+        public static void show(){
+            for(SysCommonException s : SysCommonException.values()){
+                System.out.println(s + "： SysCommonException =" + s.getCommonException());
+            }
+        }
+    }
 
     public enum UserCommonException{
 

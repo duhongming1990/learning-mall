@@ -77,15 +77,40 @@
         <auth-method>BASIC</auth-method>
     </login-config>
     
-    
+    <!-- 防止XSS攻击 -->
     <filter>
         <filter-name>XSSAndDesensitizedFilter</filter-name>
-        <filter-class>com.mmall.controller.common.XSSAndDesensitizedFilter</filter-class>
+        <filter-class>com.mmall.controller.common.XSSFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>XSSAndDesensitizedFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- 防止SQL注入 -->
+    <filter>
+        <filter-name>AntiSqlInjectionfilter</filter-name>
+        <filter-class>com.mmall.controller.common.AntiSqlInjectionfilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AntiSqlInjectionfilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 数据脱敏
+    <filter>
+        <filter-name>DesensitizedFilter</filter-name>
+        <filter-class>com.mmall.controller.common.DesensitizedFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DesensitizedFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+
+    <error-page>
+        <error-code>500</error-code>
+        <exception-type>com.mmall.common.exception.CommonException</exception-type>
+        <location>/WEB-INF/views/error/500.jsp</location>
+    </error-page>
 </web-app>
 

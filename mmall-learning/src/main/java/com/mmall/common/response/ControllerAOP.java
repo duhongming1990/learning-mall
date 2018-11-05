@@ -3,6 +3,8 @@ package com.mmall.common.response;
 
 import com.google.gson.GsonBuilder;
 import com.mmall.common.exception.CommonException;
+import com.mmall.desensitized.annotation.Desensitized;
+import com.mmall.desensitized.utils.DesensitizedUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
@@ -59,7 +61,7 @@ public class ControllerAOP {
 		} catch (Throwable e) {
 			result = handlerException(pjp, e);
 		}
-		return result;
+		return new DesensitizedUtils<>().getDesensitizedObject(result);
 
 	}
     
@@ -85,6 +87,8 @@ public class ControllerAOP {
 	private ResultBean<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
 
 		ResultBean<?> result = new ResultBean();
+		result.setMsg(e.getLocalizedMessage());
+		result.setCode(ResultBean.FAIL);
 		// 已知异常
 		if(e instanceof IllegalStateException) {
 			result.setMsg(e.getLocalizedMessage()+"非法文件格式");
@@ -99,8 +103,6 @@ public class ControllerAOP {
 			result.setMsg(commonException.getErrorInfo());
 			// 未知异常是应该重点关注的，这里可以做其他操作，如通知邮件，单独写到某个文件等等。
 		}
-		result.setMsg(e.getLocalizedMessage());
-		result.setCode(ResultBean.FAIL);
 		return result;
 	}
 
