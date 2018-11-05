@@ -295,3 +295,37 @@ public class KeyPrefixs {
 
 }
 ```
+
+#5. 缓存
+## 5.1 页面缓存
+```java
+@RequestMapping(value = "/to_list",produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String list(HttpServletRequest request, HttpServletResponse response, Model model,
+                       User user) {
+        //取缓存
+        String html = (String) redisDao.get(KeyPrefixs.GoodsKey.GOODS_LIST.getBasePrefix(),"",String.class);
+        if(!StringUtils.isEmpty(html)) {
+            return html;
+        }
+        List<GoodsVo> goodsList = goodsService.listGoodsVo();
+        model.addAttribute("goodsList", goodsList);
+        
+        SpringWebContext ctx = new SpringWebContext(request,response,
+                request.getServletContext(),request.getLocale(), model.asMap(), applicationContext);
+        //手动渲染
+        html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
+        if(!StringUtils.isEmpty(html)) {
+            redisDao.set(KeyPrefixs.GoodsKey.GOODS_LIST.getBasePrefix(),"",html);
+        }
+        return html;
+    }
+```
+## 5.2 对象缓存
+## 5.3 静态资源优化
+    火狐浏览器：静态化
+    304 Not Modified：304 未改变说明无需再次传输请求的内容，也就是说可以使用缓存的内容。
+    script：from memory cache
+    stylesheet：from disk cache
+    webpack:https://www.webpackjs.com/
+    tengine:http://tengine.taobao.org/
