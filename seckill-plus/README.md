@@ -329,3 +329,7 @@ public class KeyPrefixs {
     stylesheet：from disk cache
     webpack:https://www.webpackjs.com/
     tengine:http://tengine.taobao.org/
+
+
+# 6. 队列
+# 7. 限流

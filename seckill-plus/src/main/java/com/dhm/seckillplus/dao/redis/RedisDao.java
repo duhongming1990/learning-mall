@@ -74,6 +74,21 @@ public class RedisDao<T>{
         }
     }
 
+    /**
+     * 获取当个对象
+     * */
+    public void delete(BasePrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis =  jedisPool.getResource();
+            //生成真正的key
+            String realKey  = prefix.getPrefix() + key;
+            jedis.del(realKey);
+        }finally {
+            jedis.close();
+        }
+    }
+
     public static <T> String beanToString(T value) {
         if(value == null) {
             return null;

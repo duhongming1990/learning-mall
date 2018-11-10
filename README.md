@@ -37,7 +37,7 @@
 13 | mmall-learning | [第13-18章 Redis分布式锁原理](mmall-learning/README_12.md)
 
 
-#### Java秒杀系统方案优化-高性能高并发实战
+#### Java秒杀系统方案优化-高性能高并发实战(讲的乱)
 课程序号 | 课程编码 | 课程名称
 ---|---|---
 1 | mall-seckill | [第1章-课程介绍及项目框架搭建](mall-seckill/README.md)
@@ -45,3 +45,6 @@
 3 | mall-seckill | [第3章-秒杀功能开发及管理后台](mall-seckill/README.md)
 4 | mall-seckill | [第4章-秒杀压测-Jmeter压力测试](mall-seckill/README.md)
 5 | mall-seckill | [第5章-页面级高并发秒杀优化（Redis缓存+静态化分离）](mall-seckill/README.md)
+6 | mall-seckill | [第6章-服务级高并发秒杀优化（RabbitMQ+接口优化）](mall-seckill/README.md)
+7 | mall-seckill | [第7章-图形验证码及恶意防刷](mall-seckill/README.md)
+8 | mall-seckill | [第8章-课程总结及重难点回顾](mall-seckill/README.md)
