@@ -84,7 +84,7 @@
                        </section>
                             <!-- Pagination -->
                             <div class="center">
-                                 <@common.paging ps.pagination/>
+                                 <@common.paging ps/>
                             </div><!-- /.center-->
                         </section><!-- /#properties-->
                     </section><!-- /#results -->

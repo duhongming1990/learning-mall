@@ -1,20 +1,18 @@
 package com.mooc.house.biz.service;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+import com.google.common.collect.Lists;
+import com.google.common.collect.Ordering;
+import com.mooc.house.biz.mapper.HouseMapper;
+import com.mooc.house.common.model.House;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Ordering;
-import com.mooc.house.common.model.House;
-import com.mooc.house.common.page.PageParams;
-
 import redis.clients.jedis.Jedis;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RecommendService {
@@ -25,6 +23,9 @@ public class RecommendService {
 
   @Autowired
   private HouseService houseService;
+
+  @Autowired
+  private HouseMapper houseMapper;
 
   public void increase(Long id) {
     try {
@@ -61,7 +62,7 @@ public class RecommendService {
     }
     query.setIds(list);
     final List<Long> order = list;
-    List<House> houses = houseService.queryAndSetImg(query, PageParams.build(size, 1));
+    List<House> houses = houseService.queryAndSetImg(houseMapper.selectPageHouses(query));
     Ordering<House> houseSort = Ordering.natural().onResultOf(hs -> {
       return order.indexOf(hs.getId());
     });
@@ -71,7 +72,7 @@ public class RecommendService {
   public List<House> getLastest() {
     House query = new House();
     query.setSort("create_time");
-    List<House> houses = houseService.queryAndSetImg(query, new PageParams(8, 1));
+    List<House> houses = houseService.queryAndSetImg(houseMapper.selectPageHouses(query));
     return houses;
   }
 }

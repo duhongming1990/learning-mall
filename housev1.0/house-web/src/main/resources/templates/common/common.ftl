@@ -222,13 +222,13 @@
     </div>
 </#macro>
 
-<#macro paging pagination>
+<#macro paging ps>
         <ul class="pagination">
-           <#list pagination.pages as page>
-               <#if pagination.pageNum==page>
+           <#list 1..(ps.pages) as page>
+               <#if ps.pageNum==page>
                     <li class="active"><a href="#">${page}</a></li>
                <#else>
-                    <li><a href="javascript:void(0)"  onclick="nextPage(${page},${pagination.pageSize})">${page}</a></li>
+                    <li><a href="javascript:void(0)"  onclick="nextPage(${page},${ps.pageSize})">${page}</a></li>
                </#if>
             </#list>
         </ul><!-- /.pagination-->

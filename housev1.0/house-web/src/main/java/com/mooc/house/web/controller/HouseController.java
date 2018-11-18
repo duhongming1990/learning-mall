@@ -1,29 +1,19 @@
 package com.mooc.house.web.controller;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
+import com.mooc.house.biz.service.*;
+import com.mooc.house.common.constants.CommonConstants;
+import com.mooc.house.common.constants.HouseUserType;
+import com.mooc.house.common.model.*;
+import com.mooc.house.common.result.ResultMsg;
+import com.mooc.house.web.interceptor.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mooc.house.biz.service.AgencyService;
-import com.mooc.house.biz.service.CityService;
-import com.mooc.house.biz.service.CommentService;
-import com.mooc.house.biz.service.HouseService;
-import com.mooc.house.biz.service.RecommendService;
-import com.mooc.house.common.constants.CommonConstants;
-import com.mooc.house.common.constants.HouseUserType;
-import com.mooc.house.common.model.Comment;
-import com.mooc.house.common.model.House;
-import com.mooc.house.common.model.HouseUser;
-import com.mooc.house.common.model.User;
-import com.mooc.house.common.model.UserMsg;
-import com.mooc.house.common.page.PageData;
-import com.mooc.house.common.page.PageParams;
-import com.mooc.house.common.result.ResultMsg;
-import com.mooc.house.web.interceptor.UserContext;
+import java.util.List;
 
 @Controller
 public class HouseController {
@@ -51,13 +41,13 @@ public class HouseController {
 	 * @return
 	 */
 	@RequestMapping("/house/list")
-	public String houseList(Integer pageSize,Integer pageNum,House query,ModelMap modelMap){
-	  PageData<House> ps =  houseService.queryHouse(query,PageParams.build(pageSize, pageNum));
+	public String houseList(House query,ModelMap modelMap){
+	  PageInfo<House> ps =  houseService.queryHouse(query);
 	  List<House> hotHouses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
 	  modelMap.put("recomHouses", hotHouses);
 	  modelMap.put("ps", ps);
 	  modelMap.put("vo", query);
-	  return "house/listing";
+	  return "/house/listing";
 	}
 	
 	@RequestMapping("/house/toAdd")
@@ -76,11 +66,11 @@ public class HouseController {
 	}
 	
 	@RequestMapping("house/ownlist")
-	public String ownlist(House house,Integer pageNum,Integer pageSize,ModelMap modelMap){
+	public String ownlist(House house,ModelMap modelMap){
 		User user = UserContext.getUser();
 		house.setUserId(user.getId());
 		house.setBookmarked(false);
-		modelMap.put("ps", houseService.queryHouse(house, PageParams.build(pageSize, pageNum)));
+		modelMap.put("ps", houseService.queryHouse(house));
 		modelMap.put("pageType", "own");
 		return "/house/ownlist";
 	}
@@ -149,11 +139,11 @@ public class HouseController {
 	
 	//4.收藏列表
 	@RequestMapping("house/bookmarked")
-	public String bookmarked(House house,Integer pageNum,Integer pageSize,ModelMap modelMap){
+	public String bookmarked(House house,ModelMap modelMap){
 		User user = UserContext.getUser();
 		house.setBookmarked(true);
 		house.setUserId(user.getId());
-		modelMap.put("ps", houseService.queryHouse(house, PageParams.build(pageSize, pageNum)));
+		modelMap.put("ps", houseService.queryHouse(house));
 		modelMap.put("pageType", "book");
 		return "/house/ownlist";
 	}

@@ -1,12 +1,6 @@
 package com.mooc.house.web.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.github.pagehelper.PageInfo;
 import com.google.common.base.Objects;
 import com.mooc.house.biz.service.AgencyService;
 import com.mooc.house.biz.service.HouseService;
@@ -16,10 +10,14 @@ import com.mooc.house.common.constants.CommonConstants;
 import com.mooc.house.common.model.Agency;
 import com.mooc.house.common.model.House;
 import com.mooc.house.common.model.User;
-import com.mooc.house.common.page.PageData;
-import com.mooc.house.common.page.PageParams;
 import com.mooc.house.common.result.ResultMsg;
 import com.mooc.house.web.interceptor.UserContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class AgencyController {
@@ -47,11 +45,11 @@ public class AgencyController {
   
   
   @RequestMapping("/agency/agentList")
-  public String agentList(Integer pageSize,Integer pageNum,ModelMap modelMap){
-    if (pageSize == null) {
-      pageSize = 6;
+  public String agentList(User agency,ModelMap modelMap){
+    if (agency.getPageSize() == 0) {
+        agency.setPageSize(6);
     }
-    PageData<User> ps = agencyService.getAllAgent(PageParams.build(pageSize, pageNum));
+    PageInfo<User> ps = agencyService.getAllAgent(agency);
     List<House> houses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
     modelMap.put("recomHouses", houses);
     modelMap.put("ps", ps);
@@ -65,7 +63,7 @@ public class AgencyController {
       House query = new House();
       query.setUserId(id);
       query.setBookmarked(false);
-      PageData<House> bindHouse = houseService.queryHouse(query, new PageParams(3,1));
+      PageInfo<House> bindHouse = houseService.queryHouse(query);
       if (bindHouse != null) {
         modelMap.put("bindHouses", bindHouse.getList()) ;
       }
@@ -83,7 +81,7 @@ public class AgencyController {
   }
   
   @RequestMapping("/agency/agencyDetail")
-  public String agencyDetail(Integer id,ModelMap modelMap){
+  public String agencyDetail(Long id,ModelMap modelMap){
       Agency agency =  agencyService.getAgency(id);
       List<House> houses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
       modelMap.put("recomHouses", houses);

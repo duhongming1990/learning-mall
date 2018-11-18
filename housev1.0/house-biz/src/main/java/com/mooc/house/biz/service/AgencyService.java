@@ -1,16 +1,15 @@
 package com.mooc.house.biz.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.mooc.house.biz.mapper.AgencyMapper;
+import com.mooc.house.common.model.Agency;
+import com.mooc.house.common.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.mooc.house.biz.mapper.AgencyMapper;
-import com.mooc.house.common.model.Agency;
-import com.mooc.house.common.model.User;
-import com.mooc.house.common.page.PageData;
-import com.mooc.house.common.page.PageParams;
+import java.util.List;
 
 @Service
 public class AgencyService {
@@ -31,13 +30,13 @@ public class AgencyService {
     User user = new User();
     user.setId(userId);
     user.setType(2);
-    List<User> list = agencyMapper.selectAgent(user, PageParams.build(1, 1));
+    List<User> list = agencyMapper.selectAgent(user);
     setImg(list);
     if (!list.isEmpty()) {
       User agent = list.get(0);
       //将经纪人关联的经纪机构也一并查询出来
       Agency agency = new Agency();
-      agency.setId(agent.getAgencyId().intValue());
+      agency.setId(agent.getAgencyId());
       List<Agency> agencies = agencyMapper.select(agency);
       if (!agencies.isEmpty()) {
           agent.setAgencyName(agencies.get(0).getName());
@@ -54,14 +53,15 @@ public class AgencyService {
 
   }
 
-  public PageData<User> getAllAgent(PageParams pageParams) {
-    List<User> agents = agencyMapper.selectAgent(new User(), pageParams);
+  public PageInfo<User> getAllAgent(User agency) {
+    List<User> agents = agencyMapper.selectAgent(new User());
     setImg(agents);
-    Long count = agencyMapper.selectAgentCount(new User());
-    return PageData.buildPage(agents, count, pageParams.getPageSize(), pageParams.getPageNum());
+    PageHelper.startPage(agency.getPageNum(),agency.getPageSize());
+    PageInfo pageInfo = new PageInfo(agents);
+    return pageInfo;
   }
 
-  public Agency getAgency(Integer id) {
+  public Agency getAgency(Long id) {
     Agency agency = new Agency();
     agency.setId(id);
     List<Agency> agencies = agencyMapper.select(agency);

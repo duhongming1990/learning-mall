@@ -1,26 +1,17 @@
 package com.mooc.house.common.model;
 
-import java.util.Date;
+public class UserMsg extends CommonBean{
 
-public class UserMsg {
 
-	private Long id;
 	private String msg;
 	private Long  userId;
-	private Date  createTime;
+
 	private Long  agentId;
 	private Long  houseId;
 	private String email;
 	
 	private String userName;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getMsg() {
 		return msg;
@@ -38,13 +29,7 @@ public class UserMsg {
 		this.userId = userId;
 	}
 
-	public Date getCreateTime() {
-		return createTime;
-	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
 
 	public Long getAgentId() {
 		return agentId;

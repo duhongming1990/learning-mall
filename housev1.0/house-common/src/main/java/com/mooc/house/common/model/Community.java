@@ -1,40 +1,33 @@
 package com.mooc.house.common.model;
 
-public class Community {
-	private Integer id;
-	private String cityCode;
-	private String cityName;
-	private String name;
+public class Community extends CommonBean {
 
-	public Integer getId() {
-		return id;
-	}
+    private String cityCode;
+    private String cityName;
+    private String name;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
-	public String getCityCode() {
-		return cityCode;
-	}
+    public String getCityCode() {
+        return cityCode;
+    }
 
-	public void setCityCode(String cityCode) {
-		this.cityCode = cityCode;
-	}
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
+    }
 
-	public String getCityName() {
-		return cityName;
-	}
+    public String getCityName() {
+        return cityName;
+    }
 
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -22,18 +22,5 @@
             limit #{pageParams.limit}
        </if>
     </select>
-    
-    <select id="selectBlogCount" resultType="long">
-       select count(id)
-       from   blog a
-       <where>
-         <if test="id != null   and id != 0">
-             and id   = #{id}
-         </if>
-      </where>
-       order by a.create_time desc
-    </select>
-    
-    
 
 </mapper> 

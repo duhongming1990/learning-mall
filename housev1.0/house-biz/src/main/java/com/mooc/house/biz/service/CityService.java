@@ -14,7 +14,7 @@ public class CityService {
     City city = new City();
     city.setCityCode("110000");
     city.setCityName("北京");
-    city.setId(1);
+    city.setId(1L);
     return Lists.newArrayList(city);
   }
 

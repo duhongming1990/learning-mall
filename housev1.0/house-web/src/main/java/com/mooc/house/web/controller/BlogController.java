@@ -1,13 +1,6 @@
 package com.mooc.house.web.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import com.github.pagehelper.PageInfo;
 import com.mooc.house.biz.service.BlogService;
 import com.mooc.house.biz.service.CommentService;
 import com.mooc.house.biz.service.RecommendService;
@@ -15,8 +8,13 @@ import com.mooc.house.common.constants.CommonConstants;
 import com.mooc.house.common.model.Blog;
 import com.mooc.house.common.model.Comment;
 import com.mooc.house.common.model.House;
-import com.mooc.house.common.page.PageData;
-import com.mooc.house.common.page.PageParams;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class BlogController {
@@ -31,8 +29,8 @@ public class BlogController {
   private RecommendService recommendService;
   
   @RequestMapping(value="blog/list",method={RequestMethod.POST,RequestMethod.GET})
-  public String list(Integer pageSize,Integer pageNum,Blog query,ModelMap modelMap){
-    PageData<Blog> ps = blogService.queryBlog(query,PageParams.build(pageSize, pageNum));
+  public String list(Blog query,ModelMap modelMap){
+    PageInfo<Blog> ps = blogService.queryBlog(query);
     List<House> houses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);
     modelMap.put("recomHouses", houses);
     modelMap.put("ps", ps);
@@ -40,7 +38,7 @@ public class BlogController {
   }
   
   @RequestMapping(value="blog/detail",method={RequestMethod.POST,RequestMethod.GET})
-  public String blogDetail(int id,ModelMap modelMap){
+  public String blogDetail(Long id,ModelMap modelMap){
     Blog blog = blogService.queryOneBlog(id);
     List<Comment> comments = commentService.getBlogComments(id,8);
     List<House> houses =  recommendService.getHotHouse(CommonConstants.RECOM_SIZE);

@@ -23,7 +23,7 @@ import java.util.Date;
  * @Email 19919902414@189.cn
  * @Date 2018/11/17 11:25
  */
-public class User {
+public class User extends CommonBean{
 
 	private Long id;
 
