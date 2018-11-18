@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mooc.house.biz.service.AgencyService;
@@ -29,17 +32,25 @@ public class UserController {
 
   /**
    * 注册提交:1.注册验证 2 发送邮件 3验证失败重定向到注册页面 注册页获取:根据account对象为依据判断是否注册页获取请求
-   * 
-   * @param account
+   *
    * @param modelMap
    * @return
    */
-  @RequestMapping("accounts/register")
-  public String accountsRegister(User account, ModelMap modelMap) {
-    if (account == null || account.getName() == null) {
+  @GetMapping("accounts/register")
+  public String accountsRegister(ModelMap modelMap) {
       modelMap.put("agencyList",  agencyService.getAllAgency());
       return "/user/accounts/register";
-    }
+  }
+
+  /**
+   * 注册提交:1.注册验证 2 发送邮件 3验证失败重定向到注册页面 注册页获取:根据account对象为依据判断是否注册页获取请求
+   *
+   * @param modelMap
+   * @param account
+   * @return
+   */
+  @PostMapping("accounts/register")
+  public String accountsRegister(@Valid User account, ModelMap modelMap) {
     // 用户验证
     ResultMsg resultMsg = UserHelper.validate(account);
     if (resultMsg.isSuccess() && userService.addAccount(account)) {
@@ -49,6 +60,7 @@ public class UserController {
       return "redirect:/accounts/register?" + resultMsg.asUrlParams();
     }
   }
+
 
   @RequestMapping("accounts/verify")
   public String verify(String key) {
@@ -81,7 +93,6 @@ public class UserController {
     } else {
       HttpSession session = req.getSession(true);
       session.setAttribute(CommonConstants.USER_ATTRIBUTE, user);
-      // session.setAttribute(CommonConstants.PLAIN_USER_ATTRIBUTE, user);
       return StringUtils.isNoneBlank(target) ? "redirect:" + target : "redirect:/index";
     }
   }
@@ -104,11 +115,10 @@ public class UserController {
    * 1.能够提供页面信息 2.更新用户信息
    * 
    * @param updateUser
-   * @param model
    * @return
    */
   @RequestMapping("accounts/profile")
-  public String profile(HttpServletRequest req, User updateUser, ModelMap model) {
+  public String profile(HttpServletRequest req, User updateUser) {
     if (updateUser.getEmail() == null) {
       return "/user/accounts/profile";
     }
@@ -127,12 +137,11 @@ public class UserController {
    * @param password
    * @param newPassword
    * @param confirmPassword
-   * @param mode
    * @return
    */
   @RequestMapping("accounts/changePassword")
   public String changePassword(String email, String password, String newPassword,
-    String confirmPassword, ModelMap mode) {
+    String confirmPassword) {
     User user = userService.auth(email, password);
     if (user == null || !confirmPassword.equals(newPassword)) {
       return "redirct:/accounts/profile?" + ResultMsg.errorMsg("密码错误").asUrlParams();

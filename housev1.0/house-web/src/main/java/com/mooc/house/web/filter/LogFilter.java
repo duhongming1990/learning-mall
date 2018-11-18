@@ -28,7 +28,7 @@ public class LogFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-		log.info("log filter!!!");
+//		log.info("log filter!!!");
 		filterChain.doFilter(servletRequest,servletResponse);
 	}
 

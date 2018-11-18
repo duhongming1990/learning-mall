@@ -136,8 +136,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import com.mooc1.house.autoconfig.EnableHttpClient;
 
 @SpringBootApplication
-@EnableHttpClient
-@EnableAsync
 @ServletComponentScan(basePackages = {"com.mooc.house.web.filter"})
 public class HouseApplication {
 
@@ -147,7 +145,7 @@ public class HouseApplication {
 }
 ```
 
-# 2移除tomcat，添加jetty
+# 2 移除tomcat，添加jetty
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -164,3 +162,6 @@ public class HouseApplication {
     <artifactId>spring-boot-starter-jetty</artifactId>
 </dependency>
 ``` 
+
+# 3 SpringBoot起步依赖stater
+略

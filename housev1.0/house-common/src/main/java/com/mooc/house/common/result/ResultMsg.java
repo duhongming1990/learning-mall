@@ -57,7 +57,7 @@ public class ResultMsg {
 		map.put(errorMsgKey, errorMsg);
 		return map;
 	}
-	
+
 	public String asUrlParams(){
 		Map<String, String> map = asMap();
 		Map<String, String> newMap = Maps.newHashMap();
