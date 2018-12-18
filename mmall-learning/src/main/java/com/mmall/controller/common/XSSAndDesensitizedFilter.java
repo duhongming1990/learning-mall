@@ -26,13 +26,13 @@ public class XSSAndDesensitizedFilter implements Filter {
         log.info("XSSAndDesensitizedFilter start");
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
-        DesensitizedHttpServletResponseWrapper httpServletResponseWrapper= new DesensitizedHttpServletResponseWrapper(response);
-        String result = httpServletResponseWrapper.getResult();
+//        DesensitizedHttpServletResponseWrapper httpServletResponseWrapper= new DesensitizedHttpServletResponseWrapper(response);
+//        String result = httpServletResponseWrapper.getResult();
+//
+//        PrintWriter out = response.getWriter();
+//        out.write(result);
 
-        PrintWriter out = response.getWriter();
-        out.write(result);
-
-        filterChain.doFilter(new XSSHttpServletRequestWrapper(request),response);
+        filterChain.doFilter(request,response);
         log.info("XSSAndDesensitizedFilter end");
     }
 

@@ -1,33 +1,26 @@
 package com.dhm.seckillplus.rabbitmq;
 
-import com.dhm.seckillplus.dao.redis.RedisDao;
-import com.dhm.seckillplus.service.GoodsService;
-import com.dhm.seckillplus.service.OrderService;
-import com.dhm.seckillplus.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 //@Service
 public class MQReceiver {
 
 		private static Logger log = LoggerFactory.getLogger(MQReceiver.class);
 		
-		@Autowired
-		RedisDao redisDao;
+//		@Autowired
+//		RedisDao redisDao;
+//
+//		@Autowired
+//		GoodsService goodsService;
+//
+//		@Autowired
+//		OrderService orderService;
+//
+//		@Autowired
+//		SeckillService seckillService;
 		
-		@Autowired
-		GoodsService goodsService;
-		
-		@Autowired
-		OrderService orderService;
-		
-		@Autowired
-		SeckillService seckillService;
-		
-		@RabbitListener(queues=MQConfig.MIAOSHA_QUEUE)
+//		@RabbitListener(queues=MQConfig.MIAOSHA_QUEUE)
 		public void receive(String message) {
 //			log.info("receive message:"+message);
 //			MiaoshaMessage mm  = redisDao.setObject(message, MiaoshaMessage.class,0);
